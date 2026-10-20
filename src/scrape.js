@@ -1,6 +1,5 @@
 ﻿
 import "dotenv/config";
-import Browserbase from "@browserbasehq/sdk";
 import { chromium } from "playwright";
 import { logScrapeRun } from "./db.js";
 import {
@@ -8,90 +7,46 @@ import {
   extractBsnlApiPlans
 } from "./planExtractor.js";
 
-function getBrowserbaseClient() {
-  const apiKey = process.env.BROWSERBASE_API_KEY;
-  const projectId = process.env.BROWSERBASE_PROJECT_ID;
+const NAVIGATION_TIMEOUT_MS = 60000;
+const PLAN_WAIT_TIMEOUT_MS = 10000;
 
-  if (!apiKey || !projectId) {
-    throw new Error(
-      "BROWSERBASE_API_KEY or BROWSERBASE_PROJECT_ID is missing from .env."
-    );
-  }
+async function openLocalPage(timings = {}) {
+  const launchStarted = Date.now();
 
-  return {
-    client: new Browserbase({ apiKey }),
-    projectId
-  };
-}
-
-async function openBrowserbasePage(timings = {}) {
-  const { client, projectId } = getBrowserbaseClient();
-
-  const sessionStarted = Date.now();
-
-  const session = await client.sessions.create({
-    projectId,
-    api_timeout: 120
+  const browser = await chromium.launch({
+    headless: true
   });
 
-  timings.browserbaseSessionCreateMs =
-    Date.now() - sessionStarted;
+  timings.browserLaunchMs = Date.now() - launchStarted;
 
   try {
-    const connectStarted = Date.now();
+    const context = await browser.newContext({
+      viewport: { width: 1440, height: 1000 },
+      locale: "en-IN"
+    });
 
-    const browser = await chromium.connectOverCDP(
-      session.connectUrl
-    );
+    const page = await context.newPage();
+    page.setDefaultTimeout(15000);
 
-    timings.browserConnectMs = Date.now() - connectStarted;
-
-    const context = browser.contexts()[0];
-    const page = context.pages()[0] ?? await context.newPage();
-
-    return {
-      client,
-      session,
-      browser,
-      page
-    };
+    return { browser, context, page };
   } catch (error) {
-    try {
-      await client.sessions.update(session.id, {
-        status: "REQUEST_RELEASE"
-      });
-    } catch {}
-
+    await browser.close().catch(() => {});
     throw error;
   }
 }
 
-async function closeBrowserbasePage(connection, timings = {}) {
-  if (!connection) return;
+async function closeLocalPage(connection, timings = {}) {
+  if (!connection?.browser) return;
 
-  const cleanupStarted = Date.now();
+  const started = Date.now();
 
-  if (connection.browser) {
-    try {
-      await connection.browser.close();
-    } catch {}
+  try {
+    await connection.browser.close();
+  } catch (error) {
+    console.warn("Local browser cleanup warning:", error.message);
   }
 
-  if (connection.client && connection.session) {
-    try {
-      await connection.client.sessions.update(
-        connection.session.id,
-        { status: "REQUEST_RELEASE" }
-      );
-    } catch (error) {
-      console.warn(
-        "Browserbase session cleanup warning:",
-        error.message
-      );
-    }
-  }
-
-  timings.cleanupMs = Date.now() - cleanupStarted;
+  timings.cleanupMs = Date.now() - started;
 }
 
 async function waitForPlanText(page) {
@@ -103,18 +58,44 @@ async function waitForPlanText(page) {
         const text = document.body?.innerText ?? "";
 
         return (
-          /â‚¹/.test(text) &&
+          /₹|â‚¹|\bRs\.?\s*\d/i.test(text) &&
           /\b(?:Mbps|Gbps)\b/i.test(text)
         );
       },
       null,
-      { timeout: 4000 }
+      { timeout: PLAN_WAIT_TIMEOUT_MS }
     );
   } catch {
-    // Continue to extraction if the expected text isn't detected.
+    // Continue so the extractor can determine whether usable
+    // plan information was returned.
   }
 
   return Date.now() - started;
+}
+
+async function navigateToProvider(page, provider, timings) {
+  const started = Date.now();
+
+  const response = await page.goto(provider.url, {
+    waitUntil: "domcontentloaded",
+    timeout: NAVIGATION_TIMEOUT_MS
+  });
+
+  timings.navigationMs = Date.now() - started;
+
+  return response;
+}
+
+async function readRenderedText(page, timings) {
+  const started = Date.now();
+
+  const renderedText = await page.locator("body").innerText({
+    timeout: 15000
+  });
+
+  timings.readTextMs = Date.now() - started;
+
+  return renderedText;
 }
 
 async function scrapeAirtelLive(provider) {
@@ -122,39 +103,27 @@ async function scrapeAirtelLive(provider) {
   const timings = {};
 
   try {
-    connection = await openBrowserbasePage(timings);
+    connection = await openLocalPage(timings);
     const { page } = connection;
 
-    const navigationStarted = Date.now();
-
-    const response = await page.goto(provider.url, {
-      waitUntil: "domcontentloaded",
-      timeout: 60000
-    });
-
-    timings.navigationMs = Date.now() - navigationStarted;
+    const response = await navigateToProvider(
+      page,
+      provider,
+      timings
+    );
 
     timings.readinessWaitMs = await waitForPlanText(page);
 
-    const textStarted = Date.now();
-
-    const renderedText = await page.locator("body").innerText({
-      timeout: 15000
-    });
-
-    timings.readTextMs = Date.now() - textStarted;
+    const renderedText = await readRenderedText(page, timings);
 
     const extractionStarted = Date.now();
     const plans = extractAirtelPlans(renderedText);
-
     timings.extractionMs = Date.now() - extractionStarted;
-
-    const pageTitle = await page.title();
 
     return {
       plans,
       statusCode: response?.status() ?? null,
-      pageTitle,
+      pageTitle: await page.title(),
       contentChars: renderedText.length,
       renderedText,
       stageTimingsMs: timings,
@@ -163,7 +132,7 @@ async function scrapeAirtelLive(provider) {
         : "Airtel loaded, but no usable price and speed pairs were extracted."
     };
   } finally {
-    await closeBrowserbasePage(connection, timings);
+    await closeLocalPage(connection, timings);
   }
 }
 
@@ -189,12 +158,17 @@ function extractTataPlayBrowserPlans(renderedText) {
       section.push(lines[j]);
     }
 
+    const currency = String.raw`(?:₹|â‚¹|Rs\.?)`;
+
     const priceLine = section.find((line) =>
-      /â‚¹\s*[\d,]+(?:\.\d{1,2})?\s*\+\s*GST(?:\s+X\s+\d+\s+Months?)?/i.test(line)
+      new RegExp(
+        `${currency}\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*\\+\\s*GST(?:\\s+X\\s+\\d+\\s+Months?)?`,
+        "i"
+      ).test(line)
     );
 
     const priceMatch = priceLine?.match(
-      /â‚¹\s*([\d,]+(?:\.\d{1,2})?)\s*\+\s*GST(?:\s+X\s+(\d+)\s+Months?)?/i
+      /(?:₹|â‚¹|Rs\.?)\s*([\d,]+(?:\.\d{1,2})?)\s*\+\s*GST(?:\s+X\s+(\d+)\s+Months?)?/i
     );
 
     const speedLine = section.find((line) =>
@@ -224,7 +198,9 @@ function extractTataPlayBrowserPlans(renderedText) {
 
     if (
       !Number.isFinite(price) ||
-      !Number.isFinite(speedMbps)
+      !Number.isFinite(speedMbps) ||
+      price <= 0 ||
+      speedMbps <= 0
     ) {
       continue;
     }
@@ -279,39 +255,27 @@ async function scrapeTataPlayLive(provider) {
   const timings = {};
 
   try {
-    connection = await openBrowserbasePage(timings);
+    connection = await openLocalPage(timings);
     const { page } = connection;
 
-    const navigationStarted = Date.now();
-
-    const response = await page.goto(provider.url, {
-      waitUntil: "domcontentloaded",
-      timeout: 60000
-    });
-
-    timings.navigationMs = Date.now() - navigationStarted;
+    const response = await navigateToProvider(
+      page,
+      provider,
+      timings
+    );
 
     timings.readinessWaitMs = await waitForPlanText(page);
 
-    const textStarted = Date.now();
-
-    const renderedText = await page.locator("body").innerText({
-      timeout: 15000
-    });
-
-    timings.readTextMs = Date.now() - textStarted;
+    const renderedText = await readRenderedText(page, timings);
 
     const extractionStarted = Date.now();
     const plans = extractTataPlayBrowserPlans(renderedText);
-
     timings.extractionMs = Date.now() - extractionStarted;
-
-    const pageTitle = await page.title();
 
     return {
       plans,
       statusCode: response?.status() ?? null,
-      pageTitle,
+      pageTitle: await page.title(),
       contentChars: renderedText.length,
       renderedText,
       stageTimingsMs: timings,
@@ -320,7 +284,7 @@ async function scrapeTataPlayLive(provider) {
         : "Tata Play Fiber loaded, but the browser text did not yield usable plans. The page layout or price format may need an extractor adjustment."
     };
   } finally {
-    await closeBrowserbasePage(connection, timings);
+    await closeLocalPage(connection, timings);
   }
 }
 
@@ -329,11 +293,11 @@ async function scrapeBsnlLive(provider) {
   const timings = {};
 
   try {
-    connection = await openBrowserbasePage(timings);
+    connection = await openLocalPage(timings);
     const { page } = connection;
 
+    let captureStarted = false;
     let resolveCapture;
-    let captured = false;
 
     const capturePromise = new Promise((resolve) => {
       resolveCapture = resolve;
@@ -341,13 +305,13 @@ async function scrapeBsnlLive(provider) {
 
     page.on("response", async (response) => {
       if (
-        captured ||
+        captureStarted ||
         !response.url().includes("/ecare/bsnl/offer/list")
       ) {
         return;
       }
 
-      captured = true;
+      captureStarted = true;
 
       try {
         resolveCapture({
@@ -370,7 +334,7 @@ async function scrapeBsnlLive(provider) {
       try {
         await page.goto(provider.url, {
           waitUntil: "commit",
-          timeout: 60000
+          timeout: NAVIGATION_TIMEOUT_MS
         });
 
         navigationSucceeded = true;
@@ -379,17 +343,11 @@ async function scrapeBsnlLive(provider) {
         lastNavigationError = error;
 
         if (page.url().includes("wsc.cdr.bsnl.co.in")) {
-          console.warn(
-            "BSNL navigation reported an error after reaching its host; checking page readiness."
-          );
           navigationSucceeded = true;
           break;
         }
 
         if (attempt < 2) {
-          console.warn(
-            "BSNL navigation attempt 1 failed; retrying once."
-          );
           await new Promise((resolve) => setTimeout(resolve, 1000));
         }
       }
@@ -399,7 +357,7 @@ async function scrapeBsnlLive(provider) {
 
     if (!navigationSucceeded) {
       throw new Error(
-        `BSNL navigation failed after retry: ${lastNavigationError?.message ?? "Unknown navigation error"}`
+        `BSNL navigation failed: ${lastNavigationError?.message ?? "Unknown navigation error"}`
       );
     }
 
@@ -427,7 +385,6 @@ async function scrapeBsnlLive(provider) {
 
     let timeoutId;
     const apiStarted = Date.now();
-
     let capture;
 
     try {
@@ -436,16 +393,13 @@ async function scrapeBsnlLive(provider) {
         new Promise((_, reject) => {
           timeoutId = setTimeout(() => {
             reject(
-              new Error(
-                "Timed out waiting for the live BSNL plan API."
-              )
+              new Error("Timed out waiting for the live BSNL plan API.")
             );
           }, 25000);
         })
       ]);
     } finally {
       if (timeoutId) clearTimeout(timeoutId);
-
       timings.apiResponseWaitMs = Date.now() - apiStarted;
     }
 
@@ -476,18 +430,12 @@ async function scrapeBsnlLive(provider) {
 
     const extractionStarted = Date.now();
     const plans = extractBsnlApiPlans(offers);
-
     timings.extractionMs = Date.now() - extractionStarted;
-
-    console.log("BSNL live offers received:", offers.length);
-    console.log("BSNL plans extracted:", plans.length);
-
-    const pageTitle = await page.title();
 
     return {
       plans,
       statusCode: capture.statusCode,
-      pageTitle,
+      pageTitle: await page.title(),
       contentChars: JSON.stringify(offers).length,
       stageTimingsMs: timings,
       note: plans.length
@@ -495,7 +443,7 @@ async function scrapeBsnlLive(provider) {
         : "The BSNL API responded, but no usable plans were extracted."
     };
   } finally {
-    await closeBrowserbasePage(connection, timings);
+    await closeLocalPage(connection, timings);
   }
 }
 
@@ -507,15 +455,6 @@ export async function scrapeProvider({
   const started = Date.now();
 
   try {
-    if (
-      !process.env.BROWSERBASE_API_KEY ||
-      !process.env.BROWSERBASE_PROJECT_ID
-    ) {
-      throw new Error(
-        "BROWSERBASE_API_KEY or BROWSERBASE_PROJECT_ID is missing from .env."
-      );
-    }
-
     let result;
 
     if (provider.id === "airtel") {
@@ -611,5 +550,3 @@ export async function scrapeProvider({
     };
   }
 }
-
-
