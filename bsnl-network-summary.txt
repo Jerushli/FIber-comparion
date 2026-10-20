@@ -1,0 +1,399 @@
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "document",
+  "url": "https://wsc.cdr.bsnl.co.in/viewAllPlans",
+  "contentType": "text/html",
+  "bodyPreview": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta\n      name=\"App-Config\"\n      content=\"fullscreen=yes,useHistoryState=yes,transition=yes\"\n    />\n    <meta content=\"yes\" name=\"apple-mobile-web-app-capable\" />\n    <meta content=\"yes\" name=\"apple-touch-fullscreen\" />\n    <meta content=\"telephone=no,email=no\" name=\"format-detection\" />\n    <!-- <meta http-equiv=\"Content-Security-Policy\" content=\"upgrade-insecure-requests\" /> -->\n    <meta\n      name=\"viewport\"\n      content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover\"\n    />\n    <link rel=\"icon\" type=\"image/x-icon\" href=\"images/bsnlBharat1.png\" />\n    <title> </title>\n    <link rel=\"icon\" href=\"images/bsnlBharat1.png\" type=\"image/x-icon\" />\n\n    <!-- chat bot css start -->\n    <link\n      rel=\"stylesheet\"\n      href=\"https://use.fontawesome.com/releases/v5.10.2/css/all.css\"\n    />\n    <link href=\"/styles/validation.min.css\" rel=\"stylesheet\" />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/customUI.css\" />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/menu.css\" />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/readMore.css\" />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/feed.css\" />\n    <!-- chat bot css end -->\n\n    <!-- particles -->\n    <!-- <link rel=\"stylesheet\" href=\"particles/particles.css\" /> -->\n\n    <meta\n      name=\"google-site-verification\"\n      content=\"gpFrAovq7wq1ValH7JBH5kjA8ayjy7sxFIwDGSlR4_Q\"\n    />\n    <!-- Global site tag (gtag.js) - Google Analytics -->\n    <script\n      async=\"\"\n      src=\"https://www.googletagmanager.com/gtag/js?id=G-990S9EWBTF\"\n    ></script>\n    <script>\n      window.dataLayer = window.dataLa"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/styles/validation.min.css",
+  "contentType": "text/css",
+  "bodyPreview": ".validate-error{border-color:#d10000!important}.validate-popup{transition:all .3s ease;cursor:pointer;position:absolute;background-color:#d10000;color:#fff;font-size:12px;line-height:1;padding:8px 12px;z-index:-1;opacity:0}.validate-popup.active{z-index:99999;opacity:1}.validate-popup:after{position:absolute;bottom:0;right:0;content:\"\";width:0;height:0;border-color:#d10000 transparent transparent;border-style:solid;border-width:5px 5px 0;margin-right:8px;margin-bottom:-5px}.validate-popup.short-version:after{left:0;margin-left:8px}.validate-class{position:relative}.validate-class:after,.validate-class:before{content:\"\";opacity:0;transition:opacity .3s ease;position:absolute;right:0;top:-36px}.validate-class:before{background-color:#d10000;color:#fff;font-size:12px;line-height:1;padding:8px 12px;white-space:nowrap}.validate-class:after{width:0;height:0;border-color:#d10000 transparent transparent;border-style:solid;border-width:5px 5px 0;margin-top:28px;margin-right:10px}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/styles/customUI.css",
+  "contentType": "text/css",
+  "bodyPreview": "@import url(\"https://fonts.googleapis.com/css?family=Nunito:400,600,700\");.oda-chat-wrapper #CTB{font-family:unset;border-radius:10px;border-collapse:collapse}.oda-chat-wrapper #CTB th{padding:7px;background:#ffffaf;width:100%;font-size:13px;text-align:center;font-weight:bolder;font-style:unset;color:#272626;opacity:1px}.oda-chat-wrapper #CTB td{padding:10px 5px 10px 6px;font-size:10px;text-align:center;background:#fff;color:#2f4f4f}.oda-chat-wrapper #CTB tr{background-color:#f2f2f2;border-radius:10px;font-size:10px;text-align:center;border-radius:2em;background-color:#fff;margin-bottom:20px;-moz-box-shadow:0 0 3px grey;-webkit-box-shadow:0 0 3px grey;box-shadow:0 0 8px grey}.oda-chat-wrapper #CTB tr:hover{background-color:#288df3}.oda-chat-wrapper #ctbreq{font-family:unset;border-radius:10px;border-collapse:collapse}.oda-chat-wrapper #ctbreq th{padding:12px 1px;background:#ffffaf;width:100%;font-size:13px;text-align:center;font-weight:bolder;font-style:unset;color:#272626;opacity:1px}.oda-chat-wrapper #ctbreq td{padding:8px 10px 8px 0;font-size:10px;text-align:center;background:#fff;color:#2f4f4f}.oda-chat-wrapper #ctbreq tr{background-color:#f2f2f2;border-radius:10px;font-size:10px;text-align:center;background-color:#fff;margin-bottom:20px;-moz-box-shadow:0 0 3px grey;-webkit-box-shadow:0 0 3px grey;box-shadow:0 0 8px grey}.oda-chat-wrapper #ctbreq tr:hover{background-color:#288df3}.oda-chat-wrapper #CM{font-family:unset;border-radius:10px;border-collapse:collapse}.oda-chat-wrapper #CM th{padding:12px 0 12px 6px;background:#ffffaf;width:100%;font-size:13px;text-align:center;font-weight:bolder;font-style:unset;color:#272626;opacity:1px}.oda-chat-wrapper #CM td{padding:14px 10px;font-size:11px;text-align:center;background:#fff;color:#2f4f4f}.oda-chat-wrapper #CM tr{back"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/styles/menu.css",
+  "contentType": "text/css",
+  "bodyPreview": "#menu-items{position:fixed;left:calc(100% - 328px);background:#fff;display:none;box-shadow:0 0 10px rgba(51,51,51,.3);border-radius:2px;z-index:9999;margin-top:5px}#menu-items:before{content:\"\";position:absolute;display:block;width:0;left:50%;top:0;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;-webkit-transform:translate(-50%,-100%);transform:translate(-50%,-100%)}#menu-items ul{list-style:none;padding:0;margin:0}#menu-items ul li:first-child a{color:#4a4a4a;font-weight:400}#menu-items ul li img{margin-right:10px}#menu-items ul li:hover{background-color:#e5eef5}#menu-items ul li:first-child:hover{background-color:transparent}#menu-items ul li a{font-size:14px;font-weight:600;color:#000;display:block;padding:10px;border-bottom:1px solid hsla(0,0%,80%,.2784313725490196);margin:0 20px;line-height:20px}.menu-icon{border-left:1px solid #ccc;padding:0 10px;margin-left:10px;margin-right:10px;font-size:14px}.mail-icon{color:#0059a4!important}.menu-icon:hover{color:#ccc;border-left:1px solid #ccc;padding:0 10px;margin-left:10px;font-weight:700;font-size:14px}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://fonts.googleapis.com/css?family=Nunito:400,600,700",
+  "contentType": "text/css; charset=utf-8",
+  "bodyPreview": "/* cyrillic-ext */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 400;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOOaBXso.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 400;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIMeaBXso.woff2) format('woff2');\n  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 400;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOuaBXso.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 400;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIO-aBXso.woff2) format('woff2');\n  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 400;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaB.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-wei"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/styles/readMore.css",
+  "contentType": "text/css",
+  "bodyPreview": ".more{display:none}.displayblock{display:block}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/styles/feed.css",
+  "contentType": "text/css",
+  "bodyPreview": ".oda-chat-wrapper .feedback{width:100%;max-width:780px;background:#fff;margin:0 auto;padding:15px}.oda-chat-wrapper .survey-hr{margin:10px 0;border:.5px solid #ddd}.oda-chat-wrapper .star-rating{margin:4px 0 10px;font-size:0;white-space:nowrap;display:inline-block;width:175px;height:35px;overflow:hidden;position:relative;background:url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZmlsbD0iI0RERCIgZD0iTTEwIDBsMy4wOSA2LjU4M0wyMCA3LjYzOWwtNSA1LjEyNUwxNi4xOCAyMCAxMCAxNi41ODMgMy44MiAyMCA1IDEyLjc2NCAwIDcuNjM5bDYuOTEtMS4wNTZ6Ii8+PC9zdmc+\");background-size:contain}.oda-chat-wrapper .star-rating i{opacity:0;position:absolute;left:0;top:0;height:100%;width:20%;z-index:1;background:url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZmlsbD0iI0ZGREY4OCIgZD0iTTEwIDBsMy4wOSA2LjU4M0wyMCA3LjYzOWwtNSA1LjEyNUwxNi4xOCAyMCAxMCAxNi41ODMgMy44MiAyMCA1IDEyLjc2NCAwIDcuNjM5bDYuOTEtMS4wNTZ6Ii8+PC9zdmc+\");background-size:contain}.oda-chat-wrapper .star-rating input{-moz-appearance:none;-webkit-appearance:none;opacity:0;display:inline-block!important;width:20%;height:100%;margin:0;padding:0;z-index:2;position:relative}.oda-chat-wrapper .star-rating input:checked+i,.oda-chat-wrapper .star-rating input:hover+i{opacity:1}.oda-chat-wrapper .star-rating i~i{width:40%}.oda-chat-wrapper .star-rating i~i~i{width:60%}.oda-chat-wrapper .star-rating i~i~i~i{width:80%}.oda-chat-wrapper .star-rating i~i~i~i~i{width:100%}.oda-chat-wrapper .choice{position:fixed;top:0;left:0;right:0;text-align:center;padding:20px;display:block}.oda-chat-wrapper span.scale-rating{margin:5px 0 15px;display:inline-block;width:100%}.oda-chat-wrapper span.scale-rating>label{position:relative;-"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/export.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "let saveFile = () => {\n  // Get the data from each element .\n  // var user = $(\".oda-chat-right .oda-chat-message-bubble\").text();\n  // var bot = $(\".oda-chat-left .oda-chat-message-bubble\").text();\n\n  var fileOutput = ' ';\n\n  $('.oda-chat-message').each(function (index, element) {\n    if ($(element).hasClass('oda-chat-right')) {\n      fileOutput =\n        fileOutput +\n        '\\n' +\n        $(element).find('div.oda-chat-message-date').text() +\n        '\\t' +\n        'User:' +\n        '\\t' +\n        $(element).find('div.oda-chat-message-content').text() +\n        '\\n';\n      console.log('IF' + fileOutput);\n    } else if ($(element).hasClass('oda-chat-left')) {\n      fileOutput =\n        fileOutput +\n        '\\n' +\n        $(element).find('div.oda-chat-message-date').text() +\n        '\\t' +\n        'Bot:' +\n        '\\t' +\n        $(element).find('div.oda-chat-message-content').text() +\n        '\\n';\n      console.log('ELSE' + fileOutput);\n    }\n  });\n  console.log(fileOutput);\n\n  // This variable stores all the data.\n  let data = fileOutput;\n  // '\\r User: ' + user +'\\n'+ '\\r Bot: ' + bot\n\n  //console.log(data);\n\n  // Convert the text to BLOB.\n  const textToBLOB = new Blob([fileOutput], { type: 'text/plain' });\n  const sFileName = 'Bot Conversation.txt'; // The file to save the data.\n\n  let newLink = document.createElement('a');\n  newLink.download = sFileName;\n\n  if (window.webkitURL != null) {\n    newLink.href = window.webkitURL.createObjectURL(textToBLOB);\n  } else {\n    newLink.href = window.URL.createObjectURL(textToBLOB);\n    newLink.style.display = 'none';\n    document.body.appendChild(newLink);\n  }\n\n  newLink.click();\n};\n"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/jquery-3.2.1.slim.min.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "/*! jQuery v3.2.1 -ajax,-ajax/jsonp,-ajax/load,-ajax/parseXML,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-event/ajax,-effects,-effects/Tween,-effects/animatedSelector | (c) JS Foundation and other contributors | jquery.org/license */\n!function(a,b){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(\"jQuery requires a window with a document\");return b(a)}:b(a)}(\"undefined\"!=typeof window?window:this,function(a,b){\"use strict\";var c=[],d=a.document,e=Object.getPrototypeOf,f=c.slice,g=c.concat,h=c.push,i=c.indexOf,j={},k=j.toString,l=j.hasOwnProperty,m=l.toString,n=m.call(Object),o={};function p(a,b){b=b||d;var c=b.createElement(\"script\");c.text=a,b.head.appendChild(c).parentNode.removeChild(c)}var q=\"3.2.1 -ajax,-ajax/jsonp,-ajax/load,-ajax/parseXML,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-event/ajax,-effects,-effects/Tween,-effects/animatedSelector\",r=function(a,b){return new r.fn.init(a,b)},s=/^[\\s\\uFEFF\\xA0]+|[\\s\\uFEFF\\xA0]+$/g,t=/^-ms-/,u=/-([a-z])/g,v=function(a,b){return b.toUpperCase()};r.fn=r.prototype={jquery:q,constructor:r,length:0,toArray:function(){return f.call(this)},get:function(a){return null==a?f.call(this):a<0?this[a+this.length]:this[a]},pushStack:function(a){var b=r.merge(this.constructor(),a);return b.prevObject=this,b},each:function(a){return r.each(this,a)},map:function(a){return this.pushStack(r.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(f.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(a<0?b:0);return this.pushSt"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/settings.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "'use strict';\n\n// Set client auth mode - true to enable client auth, false to disable it\nconst isClientAuthEnabled = false;\n\n/**\n * A function mocking an endpoint call to backend to provide authentication token\n * The recommended behaviour is fetching the token from backend server\n *\n * @returns {Promise} Promise to provide a signed JWT token\n */\nconst mockApiCall = () => {\n  return new Promise(resolve => {\n    setTimeout(function () {\n      const now = Math.floor(Date.now() / 1000);\n      const payload = {\n        iat: now,\n        exp: now + 3600,\n        channelId: '<channelID>',\n        userId: '<userID>',\n      };\n      const SECRET = '<channel-secret>';\n\n      // An unimplemented function generating signed JWT token with given header, payload, and signature\n      const token = generateJWTToken({ alg: 'HS256', typ: 'JWT' }, payload, SECRET);\n      resolve(token);\n    }, Math.floor(Math.random() * 1000) + 1000);\n  });\n};\n\n/**\n * Unimplemented function to generate signed JWT token. Should be replaced with\n * actual method to generate the token on the server.\n *\n * @param {object} header\n * @param {object} payload\n * @param {string} signature\n */\nconst generateJWTToken = (header, payload, signature) => {\n  throw new Error('Method not implemented.');\n};\n\n/**\n * Function to generate JWT tokens. It returns a Promise to provide tokens.\n * The function is passed to SDK which uses it to fetch token whenever it needs\n * to establish connections to chat server\n *\n * @returns {Promise} Promise to provide a signed JWT token\n */\nconst generateToken = () => {\n  return new Promise(resolve => {\n    mockApiCall('https://mockurl').then(token => {\n      resolve(token);\n    });\n  });\n};\n\n/**\n * Initializes the SDK and sets a global field with passed name for it the can\n * be referred l"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/jquery.min.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "/*! jQuery v3.5.1 | (c) JS Foundation and other contributors | jquery.org/license */\n!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}:t(e)}(\"undefined\"!=typeof window?window:this,function(C,e){\"use strict\";var t=[],r=Object.getPrototypeOf,s=t.slice,g=t.flat?function(e){return t.flat.call(e)}:function(e){return t.concat.apply([],e)},u=t.push,i=t.indexOf,n={},o=n.toString,v=n.hasOwnProperty,a=v.toString,l=a.call(Object),y={},m=function(e){return\"function\"==typeof e&&\"number\"!=typeof e.nodeType},x=function(e){return null!=e&&e===e.window},E=C.document,c={type:!0,src:!0,nonce:!0,noModule:!0};function b(e,t,n){var r,i,o=(n=n||E).createElement(\"script\");if(o.text=e,t)for(r in c)(i=t[r]||t.getAttribute&&t.getAttribute(r))&&o.setAttribute(r,i);n.head.appendChild(o).parentNode.removeChild(o)}function w(e){return null==e?e+\"\":\"object\"==typeof e||\"function\"==typeof e?n[o.call(e)]||\"object\":typeof e}var f=\"3.5.1\",S=function(e,t){return new S.fn.init(e,t)};function p(e){var t=!!e&&\"length\"in e&&e.length,n=w(e);return!m(e)&&!x(e)&&(\"array\"===n||0===t||\"number\"==typeof t&&0<t&&t-1 in e)}S.fn=S.prototype={jquery:f,constructor:S,length:0,toArray:function(){return s.call(this)},get:function(e){return null==e?s.call(this):e<0?this[e+this.length]:this[e]},pushStack:function(e){var t=S.merge(this.constructor(),e);return t.prevObject=this,t},each:function(e){return S.each(this,e)},map:function(n){return this.pushStack(S.map(this,function(e,t){return n.call(e,t,e)}))},slice:function(){return this.pushStack(s.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},even:function(){return "
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/validation.min.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "!function(e,t){\"object\"==typeof exports&&\"undefined\"!=typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define(t):e.validation=t()}(this,function(){\"use strict\";\"function\"!=typeof Object.assign&&Object.defineProperty(Object,\"assign\",{value:function(e,t){if(null==e)throw new TypeError(\"Cannot convert undefined or null to object\");for(var n=Object(e),r=1;r<arguments.length;r++){var i=arguments[r];if(null!=i)for(var o in i)Object.prototype.hasOwnProperty.call(i,o)&&(n[o]=i[o])}return n},writable:!0,configurable:!0}),Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector);var e={email:/^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/},t={required:{message:\"Required\",method:function(e){if(\"checkbox\"===e.type)return e.checked;if(\"radio\"===e.type){var t=e.name;return e.parentNode.querySelectorAll(\"input[name=\"+t+\"]:checked\").length>0}return\"\"!==e.value}},email:{message:\"E-mail is wrong\",method:function(t){return\"\"===t.value||e.email.test(t.value.trim())}},emails:{message:\"E-mail is wrong\",method:function(t){return\"\"===t.value||t.value.split(/;|,/).every(function(t){return e.email.test(t.trim())})}}},n=arguments,r=[],i=window.document,o={events:[\"change\",\"paste\",\"blur\",\"keyup\"]},a=function(e){return e.getAttribute(\"data-validate\").split(\",\").map(function(e){return e.trim()}).filter(function(n){return!t[n].method(e)}).map(function(e){return t[e].message}).join(\", \")},l=function(e){return e.insertAdjacentHTML(\"beforebegin\",'<div class=\"validate-popup\"/>'),e.previousElementSibling},u=function(e,t){return e.className+=\" \"+t},c=function(e,t){return e.className=e.className.replace(t,\"\")},f=function(e,t,n){var r=arguments.len"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/custom.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "function initialize() {\n  var el = document.getElementById('top-text');\n\n  el.innerHTML =\n    el.innerHTML +\n    \"<button type='button' id='bt' title='Download Chat' class='expo' onclick='saveFile()'><img class='expo1'src='/images/download1.png'></button>\";\n\n  el.innerHTML =\n    el.innerHTML +\n    \"<div class='slideshow-container' id='bannerid'><a href='https://selfcare.bsnl.co.in/tungsten/UI/facelets/planChangeOffer.xhtml?offerType=superstarpremiumplus'  class='myslides fade' target='_blank'><img  class='mySlides w3-animate-top' src=/images/newBanner.jpg></a><a href='https://cinemaplus.bsnl.in/liveyuppott/?utm_source=display&utm_medium=banner&utm_campaign=BSNLCODOTIN' class='myslides fade' target='_blank'><img  class='mySlides w3-animate-top'src=/images/BanNew.jpg></a><a href='https://amritmahotsav.nic.in/' class='myslides fade' target='_blank'><img id='banner1'  class='mySlides w3-animate-top'src=/images/celebrate.jpg></a><a class='prev' onclick='plusSlides(-1)'>&#10094;</a><a class='next' onclick='plusSlides(1)'>&#10095;</a></div>\";\n\n  el.innerHTML = el.innerHTML + \"<p id='chat-bot-textintro'>How can I help you today?</p>\";\n\n  el.innerHTML =\n    el.innerHTML +\n    \"<div id='chat-bot-mainmenu'> <left><p id='chat-bot-spara'></p><span class='chat-bot-action-elem'><span style='position:relative;padding-bottom: 9px;padding-top: 5px;' onclick='javascript:BookNewConnection();'>New Connection</span></span><span class='chat-bot-action-elem'><span style='position:relative;padding-bottom: 8px;padding-top: 5px;' onclick='javascript:PayBillsRecharge();'>Bills/Payments</span></span><span class='chat-bot-action-elem'><span style='position:relative;padding-bottom: 9px;padding-top: 5px;' onclick='javascript:OrderStatus();'>Order Status</span></span><span class='chat-bot-action-elem'>"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/jquery-ui.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "/*!\n * jQuery UI 1.8.14\n *\n * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)\n * Dual licensed under the MIT or GPL Version 2 licenses.\n * http://jquery.org/license\n *\n * http://docs.jquery.com/UI\n */\n(function( $, undefined ) {\n\n// prevent duplicate loading\n// this is only a problem because we proxy existing functions\n// and we don't want to double proxy them\n$.ui = $.ui || {};\nif ( $.ui.version ) {\n\treturn;\n}\n\n$.extend( $.ui, {\n\tversion: \"1.8.14\",\n\n\tkeyCode: {\n\t\tALT: 18,\n\t\tBACKSPACE: 8,\n\t\tCAPS_LOCK: 20,\n\t\tCOMMA: 188,\n\t\tCOMMAND: 91,\n\t\tCOMMAND_LEFT: 91, // COMMAND\n\t\tCOMMAND_RIGHT: 93,\n\t\tCONTROL: 17,\n\t\tDELETE: 46,\n\t\tDOWN: 40,\n\t\tEND: 35,\n\t\tENTER: 13,\n\t\tESCAPE: 27,\n\t\tHOME: 36,\n\t\tINSERT: 45,\n\t\tLEFT: 37,\n\t\tMENU: 93, // COMMAND_RIGHT\n\t\tNUMPAD_ADD: 107,\n\t\tNUMPAD_DECIMAL: 110,\n\t\tNUMPAD_DIVIDE: 111,\n\t\tNUMPAD_ENTER: 108,\n\t\tNUMPAD_MULTIPLY: 106,\n\t\tNUMPAD_SUBTRACT: 109,\n\t\tPAGE_DOWN: 34,\n\t\tPAGE_UP: 33,\n\t\tPERIOD: 190,\n\t\tRIGHT: 39,\n\t\tSHIFT: 16,\n\t\tSPACE: 32,\n\t\tTAB: 9,\n\t\tUP: 38,\n\t\tWINDOWS: 91 // COMMAND\n\t}\n});\n\n// plugins\n$.fn.extend({\n\t_focus: $.fn.focus,\n\tfocus: function( delay, fn ) {\n\t\treturn typeof delay === \"number\" ?\n\t\t\tthis.each(function() {\n\t\t\t\tvar elem = this;\n\t\t\t\tsetTimeout(function() {\n\t\t\t\t\t$( elem ).focus();\n\t\t\t\t\tif ( fn ) {\n\t\t\t\t\t\tfn.call( elem );\n\t\t\t\t\t}\n\t\t\t\t}, delay );\n\t\t\t}) :\n\t\t\tthis._focus.apply( this, arguments );\n\t},\n\n\tscrollParent: function() {\n\t\tvar scrollParent;\n\t\tif (($.browser.msie && (/(static|relative)/).test(this.css('position'))) || (/absolute/).test(this.css('position'))) {\n\t\t\tscrollParent = this.parents().filter(function() {\n\t\t\t\treturn (/(relative|absolute|fixed)/).test($.curCSS(this,'position',1)) && (/(auto|scroll)/).test($.curCSS(this,'overflow',1)+$.curCSS(this,'overflow-y',1)+$.curCSS(this,'overflow-x',1));\n\t\t\t}).eq(0);\n\t\t} else {\n\t\t\tscrollParen"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/download1.png",
+  "contentType": "image/png",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/BanNew.jpg",
+  "contentType": "image/jpeg",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/newBanner.jpg",
+  "contentType": "image/jpeg",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/celebrate.jpg",
+  "contentType": "image/jpeg",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/BsnlBharat.png",
+  "contentType": "image/png",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/images/bsnlBharat1.png",
+  "contentType": "image/png",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/static/phoneLogo.8927ef63.svg",
+  "contentType": "image/svg+xml",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/static/VectorBlue.659774df.svg",
+  "contentType": "image/svg+xml",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/static/locationLogo.4965eebb.svg",
+  "contentType": "image/svg+xml",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "image",
+  "url": "https://wsc.cdr.bsnl.co.in/static/BsnlBharat.fd5caed9.svg",
+  "contentType": "image/svg+xml",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/umi.2b16d03d.css",
+  "contentType": "text/css",
+  "bodyPreview": "/*! pacakge version: 0.0.1, pacakge date: Tue Mar 24 2026 01:34:32 GMT+0800 (S+¡s¢+µáçsçåµù¦Tù¦) */\n.ant-affix{position:fixed;z-index:10}.ant-alert{box-sizing:border-box;margin:0;color:rgba(0,0,0,.85);font-size:14px;font-variant:tabular-nums;line-height:1.5715;list-style:none;font-feature-settings:\"tnum\",\"tnum\";position:relative;display:flex;align-items:center;padding:8px 15px;word-wrap:break-word;border-radius:2px}.ant-alert-content{flex:1 1;min-width:0}.ant-alert-icon{margin-right:8px}.ant-alert-description{display:none;font-size:14px;line-height:22px}.ant-alert-success{background-color:#f6ffed;border:1px solid #b7eb8f}.ant-alert-success .ant-alert-icon{color:#52c41a}.ant-alert-info{background-color:#d8e9f0;border:1px solid #69b0d6}.ant-alert-info .ant-alert-icon{color:#0161b0}.ant-alert-warning{background-color:#fffbe6;border:1px solid #ffe58f}.ant-alert-warning .ant-alert-icon{color:#faad14}.ant-alert-error{background-color:#fff2f0;border:1px solid #ffccc7}.ant-alert-error .ant-alert-icon{color:#ff4d4f}.ant-alert-error .ant-alert-description>pre{margin:0;padding:0}.ant-alert-action{margin-left:8px}.ant-alert-close-icon{margin-left:8px;padding:0;overflow:hidden;font-size:12px;line-height:12px;background-color:transparent;border:none;outline:none;cursor:pointer}.ant-alert-close-icon .anticon-close{color:rgba(0,0,0,.45);transition:color .3s}.ant-alert-close-icon .anticon-close:hover{color:rgba(0,0,0,.75)}.ant-alert-close-text{color:rgba(0,0,0,.45);transition:color .3s}.ant-alert-close-text:hover{color:rgba(0,0,0,.75)}.ant-alert-with-description{align-items:flex-start;padding:15px 15px 15px 24px}.ant-alert-with-description.ant-alert-no-icon{padding:15px}.ant-alert-with-description .ant-alert-icon{margin-right:15px;font-size:24px}.ant-alert-with-description .ant-alert-message{displa"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://www.google.com/recaptcha/api.js",
+  "contentType": "text/javascript; charset=utf-8",
+  "bodyPreview": "/* PLEASE DO NOT COPY AND PASTE THIS CODE. */(function(){var w=window,C='___grecaptcha_cfg',cfg=w[C]=w[C]||{},N='grecaptcha';var gr=w[N]=w[N]||{};gr.ready=gr.ready||function(f){(cfg['fns']=cfg['fns']||[]).push(f);};w['__recaptcha_api']='https://www.google.com/recaptcha/api2/';(cfg['render']=cfg['render']||[]).push('onload');(cfg['anchor-ms']=cfg['anchor-ms']||[]).push(20000);(cfg['execute-ms']=cfg['execute-ms']||[]).push(30000);w['__google_recaptcha_client']=true;var d=document,po=d.createElement('script');po.type='text/javascript';po.async=true; po.charset='utf-8';var v=w.navigator,m=d.createElement('meta');m.httpEquiv='origin-trial';m.content='A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==';if(v&&v.cookieDeprecationLabel){v.cookieDeprecationLabel.getValue().then(function(l){if(l!=='treatment_1.1'&&l!=='treatment_1.2'&&l!=='control_1.1'){d.head.prepend(m);}});}else{d.head.prepend(m);}po.src='https://www.gstatic.com/recaptcha/releases/4EDjxXf4knsx6UBM1L2V6cv8/recaptcha__en.js';po.crossOrigin='anonymous';po.integrity='sha384-MfhGH2E6ODxTd15SRBg5brmVxS5o/RxnXLqKDic+OfkI3CSgHC3NjS3hFyIe9GOK';var e=d.querySelector('script[nonce]'),n=e&&(e['nonce']||e.getAttribute('nonce'));if(n){po.setAttribute('nonce',n);}var s=d.getElementsByTagName('script')[0];s.parentNode.insertBefore(po, s);})();"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/vendors.2311e0f3.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[0],{\"++q6\":function(e,t,n){var r,o;(function(){\"use strict\";var n={}.hasOwnProperty;function i(){for(var e=\"\",t=0;t<arguments.length;t++){var n=arguments[t];n&&(e=u(e,a(n)))}return e}function a(e){if(\"string\"===typeof e||\"number\"===typeof e)return e;if(\"object\"!==typeof e)return\"\";if(Array.isArray(e))return i.apply(null,e);if(e.toString!==Object.prototype.toString&&!e.toString.toString().includes(\"[native code]\"))return e.toString();var t=\"\";for(var r in e)n.call(e,r)&&e[r]&&(t=u(t,r));return t}function u(e,t){return t?e?e+\" \"+t:e+t:e}e.exports?(i.default=i,e.exports=i):(r=[],o=function(){return i}.apply(t,r),void 0===o||(e.exports=o))})()},\"+2B0\":function(e,t,n){\"use strict\";var r=n(\"eRe6\"),o=n(\"xTJ+\");function i(e,t,n){r.call(this,null==e?\"canceled\":e,r.ERR_CANCELED,t,n),this.name=\"CanceledError\"}o.inherits(i,r,{__CANCEL__:!0}),e.exports=i},\"+2a4\":function(e,t,n){\"use strict\";var r=n(\"MMxC\"),o=n(\"Zcjx\"),i=n(\"f1E4\"),a=n(\"7BAe\"),u=n(\"jbR1\"),s=n(\"IuhT\");r({target:\"Set\",proto:!0,real:!0,forced:o},{some:function(e){var t=i(this),n=u(t),r=a(e,arguments.length>1?arguments[1]:void 0,3);return s(n,(function(e){if(r(e,e,t))return s.stop()}),void 0,!1,!0).stopped}})},\"+4le\":function(e,t,n){n(\"UXQe\")},\"+GPJ\":function(e,t,n){\"use strict\";var r=n(\"MMxC\"),o=n(\"Zcjx\"),i=n(\"29mP\"),a=n(\"f1E4\"),u=n(\"cT1L\"),s=n(\"/dTS\"),c=n(\"IuhT\");r({target:\"Set\",proto:!0,real:!0,forced:o},{intersection:function(e){var t=a(this),n=new(s(t,i(\"Set\"))),r=u(t.has),o=u(n.add);return c(e,(function(e){r.call(t,e)&&o.call(n,e)})),n}})},\"+Hw1\":function(e,t,n){var r=n(\"MMxC\");r({target:\"Math\",stat:!0},{iaddh:function(e,t,n,r){var o=e>>>0,i=t>>>0,a=n>>>0;return i+(r>>>0)+((o&a|(o|a)&~(o+a>>>0))>>>31)|0}})},\"+SQA\":function(e,t,n){\"use strict\";var r=n(\"cT1L\")"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/scripts/web-sdk.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "/*!\n * Copyright (c) 2020 Oracle and/or its affiliates.\n *  All rights reserved. Oracle Digital Assistant Chat Web SDK, Release: 20.6.2\n */\n!function(t,e){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=e():\"function\"==typeof define&&define.amd?define([],e):\"object\"==typeof exports?exports.WebSDK=e():t.WebSDK=e()}(window,(function(){return function(t){var e={};function n(i){if(e[i])return e[i].exports;var o=e[i]={i:i,l:!1,exports:{}};return t[i].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:i})},n.r=function(t){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(t,\"__esModule\",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\"object\"==typeof t&&t&&t.__esModule)return t;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,\"default\",{enumerable:!0,value:t}),2&e&&\"string\"!=typeof t)for(var o in t)n.d(i,o,function(e){return t[e]}.bind(null,o));return i},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\"a\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\"\",n(n.s=21)}([function(t,e,n){\"use strict\";Object.defineProperty(e,\"__esModule\",{value:!0}),e.utils=void 0;var i=n(3),o=function(t){var e=!1;return t.text&&(e=!0),e},s=function(t){var e,n,i=!1;return(null===(e=t.location)||void 0===e?void 0:e.latitude)&&(null===(n=t.location)||void 0===n?void 0:n.longitude)&&(i=!0),i},r=function(t){var e=!1;return t.postback&&(e=!0),e},a=function(t){var e,n,i=!1;return(null===(e=t.attachment)||void 0===e?void 0:e.type)&&(null===(n=t.attachment)||void 0===n?void 0:n.url)&&(i=!0),i},c=/&/g,l=/'/g,h="
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/umi.f34febb5.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(function(e){function t(t){for(var r,a,c=t[0],s=t[1],u=t[2],l=0,f=[];l<c.length;l++)a=c[l],Object.prototype.hasOwnProperty.call(i,a)&&i[a]&&f.push(i[a][0]),i[a]=0;for(r in s)Object.prototype.hasOwnProperty.call(s,r)&&(e[r]=s[r]);d&&d(t);while(f.length)f.shift()();return o.push.apply(o,u||[]),n()}function n(){for(var e,t=0;t<o.length;t++){for(var n=o[t],r=!0,a=1;a<n.length;a++){var c=n[a];0!==i[c]&&(r=!1)}r&&(o.splice(t--,1),e=s(s.s=n[0]))}return e}var r={},a={123:0},i={123:0},o=[];function c(e){return s.p+\"\"+({1:\"layouts__AdminLevelLayout.layouts__SecondLevelLayout.p__404.p__AccountBinding.p__AdminPanel.p__Admin.93ffd2a0\",2:\"layouts__AdminLevelLayout.layouts__OnlinePayment.layouts__SecondLevelLayout.p__404.p__AccountBinding.ed0281f9\",3:\"layouts__AdminLevelLayout.layouts__SecondLevelLayout.p__404.p__AccountBinding.p__AdminPanel.p__Admin.9ec476bc\",4:\"layouts__AdminLevelLayout\",5:\"layouts__CustomerFeedbackLayout\",6:\"layouts__H5Layout\",7:\"layouts__OnlinePayment\",8:\"layouts__SecondLevelLayout\",9:\"layouts__UCLayout\",10:\"layouts__VanidLayout\",11:\"layouts__WhatsAppIntegLayout\",12:\"p__404\",13:\"p__AccountBinding\",14:\"p__AdminPanel\",15:\"p__Admin__Login\",16:\"p__Admin__Signup\",17:\"p__BilledUsage\",18:\"p__BilledUsage__BroadbandDetail\",19:\"p__BilledUsage__VoiceBillDetail\",20:\"p__BillingProfile\",21:\"p__Centrex\",22:\"p__ChangePassword\",23:\"p__CommonTracking\",24:\"p__Complaints\",25:\"p__Complaints__AllComplaints\",26:\"p__Complaints__BatchComplaint\",27:\"p__Complaints__ComplaintDetail\",28:\"p__ContactUs\",29:\"p__CorporateServices\",30:\"p__CorporateServices__AllDetails\",31:\"p__CorporateServices__ConfirmDetail\",32:\"p__CorporateServices__Failure\",33:\"p__CorporateServices__MoreDetails\",34:\"p__CorporateServices__MoreThanTen\",35:\"p__CorporateServices__Success\",36:\"p__CustomerFeedback\",37:\"p__CustomerFee"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__AdminLevelLayout.layouts__SecondLevelLayout.p__404.p__AccountBinding.p__AdminPanel.p__Admin.93ffd2a0.cfb63afd.chunk.css",
+  "contentType": "text/css",
+  "bodyPreview": "/*! pacakge version: 0.0.1, pacakge date: Tue Mar 24 2026 01:34:32 GMT+0800 (S+¡s¢+µáçsçåµù¦Tù¦) */\n.ant-btn{line-height:1.5715;position:relative;display:inline-block;font-weight:700;white-space:nowrap;text-align:center;background-image:none;box-shadow:0 2px 0 rgba(0,0,0,.015);cursor:pointer;transition:all .3s cubic-bezier(.645,.045,.355,1);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;touch-action:manipulation;height:32px;padding:4px 15px;font-size:14px;border-radius:5px;color:rgba(0,0,0,.85);background:#fff;border:2px solid #0161b0}.ant-btn>.anticon{line-height:1}.ant-btn,.ant-btn:active,.ant-btn:focus{outline:0}.ant-btn:not([disabled]):hover{text-decoration:none}.ant-btn:not([disabled]):active{outline:0;box-shadow:none}.ant-btn[disabled]{cursor:not-allowed}.ant-btn[disabled]>*{pointer-events:none}.ant-btn-lg{height:40px;padding:6.4px 15px;font-size:16px;border-radius:5px}.ant-btn-sm{height:24px;padding:0 7px;font-size:14px;border-radius:2px}.ant-btn>a:only-child{color:currentColor}.ant-btn>a:only-child:after{position:absolute;top:0;right:0;bottom:0;left:0;background:transparent;content:\"\"}.ant-btn:focus,.ant-btn:hover{color:#207bbd;background:#fff;border-color:#207bbd}.ant-btn:focus>a:only-child,.ant-btn:hover>a:only-child{color:currentColor}.ant-btn:focus>a:only-child:after,.ant-btn:hover>a:only-child:after{position:absolute;top:0;right:0;bottom:0;left:0;background:transparent;content:\"\"}.ant-btn:active{color:#00478a;background:#fff;border-color:#00478a}.ant-btn:active>a:only-child{color:currentColor}.ant-btn:active>a:only-child:after{position:absolute;top:0;right:0;bottom:0;left:0;background:transparent;content:\"\"}.ant-btn[disabled],.ant-btn[disabled]:active,.ant-btn[disabled]:focus,.ant-btn[disabled]:hover{color:rgba(0,0,0,.25);backgroun"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__AdminLevelLayout.layouts__OnlinePayment.layouts__SecondLevelLayout.p__404.p__AccountBinding.ed0281f9.59997a00.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[2],{\"+NyT\":function(e,t,a){\"use strict\";var r=a(\"VTBJ\"),n=a(\"q1tI\"),c={icon:{tag:\"svg\",attrs:{viewBox:\"64 64 896 896\",focusable:\"false\"},children:[{tag:\"path\",attrs:{d:\"M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z\"}}]},name:\"left\",theme:\"outlined\"},o=c,i=a(\"/1Lp\"),l=function(e,t){return n[\"createElement\"](i[\"a\"],Object(r[\"a\"])(Object(r[\"a\"])({},e),{},{ref:t,icon:o}))},s=n[\"forwardRef\"](l);t[\"a\"]=s},\"/kpp\":function(e,t,a){\"use strict\";var r=a(\"rePB\"),n=a(\"wx14\"),c=a(\"U8pU\"),o=a(\"q1tI\"),i=a(\"eHJ2\"),l=a.n(i),s=a(\"o/2+\"),u=a(\"H84U\"),f=function(e,t){var a={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(a[r]=e[r]);if(null!=e&&\"function\"===typeof Object.getOwnPropertySymbols){var n=0;for(r=Object.getOwnPropertySymbols(e);n<r.length;n++)t.indexOf(r[n])<0&&Object.prototype.propertyIsEnumerable.call(e,r[n])&&(a[r[n]]=e[r[n]])}return a};function d(e){return\"number\"===typeof e?\"\".concat(e,\" \").concat(e,\" auto\"):/^\\d+(\\.\\d+)?(px|em|rem|%)$/.test(e)?\"0 0 \".concat(e):e}var p=[\"xs\",\"sm\",\"md\",\"lg\",\"xl\",\"xxl\"],b=o[\"forwardRef\"]((function(e,t){var a,i=o[\"useContext\"](u[\"b\"]),b=i.getPrefixCls,m=i.direction,v=o[\"useContext\"](s[\"a\"]),O=v.gutter,h=v.wrap,j=v.supportFlexGap,x=e.prefixCls,g=e.span,y=e.order,w=e.offset,C=e.push,N=e.pull,E=e.className,P=e.children,S=e.flex,H=e.style,k=f(e,[\"prefixCls\",\"span\",\"order\",\"offset\",\"push\",\"pull\",\"className\",\"children\",\"flex\",\"style\"]),z=b(\"col\",x),L={};p.forEach((function(t){var a,o={},i=e[t];\"number\"===typeof i?o.span=i:\"object\"===Object(c[\"a\"])(i)&&(o=i||{}),delete k[t],L=Object(n[\"a\"])(Object(n[\"a\"])({},L),(a={},Object(r[\"a\"])(a"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__AdminLevelLayout.layouts__SecondLevelLayout.p__404.p__AccountBinding.p__AdminPanel.p__Admin.93ffd2a0.d476d358.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[1],{\"+L6B\":function(e,t,n){\"use strict\";n(\"cIOH\"),n(\"qCM6\")},\"+wpF\":function(e,t,n){\"use strict\";n.r(t);var r=n(\"wx14\"),a=n(\"ODXe\"),o=n(\"q1tI\"),c=n(\"1W/9\"),i=n(\"VTBJ\"),s=n(\"eHJ2\"),u=n.n(s),l=n(\"4IlW\"),f=n(\"l4aY\"),d=n(\"bX4T\"),p=n(\"8XRh\");function v(e){var t=e.prefixCls,n=e.style,a=e.visible,c=e.maskProps,s=e.motionName;return o[\"createElement\"](p[\"default\"],{key:\"mask\",visible:a,motionName:s,leavedClassName:\"\".concat(t,\"-mask-hidden\")},(function(e){var a=e.className,s=e.style;return o[\"createElement\"](\"div\",Object(r[\"a\"])({style:Object(i[\"a\"])(Object(i[\"a\"])({},s),n),className:u()(\"\".concat(t,\"-mask\"),a)},c))}))}function b(e,t,n){var r=t;return!r&&n&&(r=\"\".concat(e,\"-\").concat(n)),r}var m=-1;function h(){return m+=1,m}function O(e,t){var n=e[\"page\".concat(t?\"Y\":\"X\",\"Offset\")],r=\"scroll\".concat(t?\"Top\":\"Left\");if(\"number\"!==typeof n){var a=e.document;n=a.documentElement[r],\"number\"!==typeof n&&(n=a.body[r])}return n}function g(e){var t=e.getBoundingClientRect(),n={left:t.left,top:t.top},r=e.ownerDocument,a=r.defaultView||r.parentWindow;return n.left+=O(a),n.top+=O(a,!0),n}var y=o[\"memo\"]((function(e){var t=e.children;return t}),(function(e,t){var n=t.shouldUpdate;return!n})),E={width:0,height:0,overflow:\"hidden\",outline:\"none\"},j=o[\"forwardRef\"]((function(e,t){var n=e.closable,c=e.prefixCls,s=e.width,l=e.height,f=e.footer,d=e.title,v=e.closeIcon,b=e.style,m=e.className,h=e.visible,O=e.forceRender,j=e.bodyStyle,C=e.bodyProps,w=e.children,x=e.destroyOnClose,N=e.modalRender,k=e.motionName,T=e.ariaId,S=e.onClose,A=e.onVisibleChanged,R=e.onMouseDown,_=e.onMouseUp,I=e.mousePosition,P=Object(o[\"useRef\"])(),M=Object(o[\"useRef\"])(),z=Object(o[\"useRef\"])();o[\"useImperativeHandle\"](t,(function(){return{focus:function(){var e"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__AdminLevelLayout.layouts__SecondLevelLayout.p__404.p__AccountBinding.p__AdminPanel.p__Admin.9ec476bc.9d53b300.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[3],{\"0NO7\":function(A,S){A.exports=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAABTNSURBVHgB7V0LcFzVef52tSuttHqsXpbfloxjHBuwDCY4PBIxCRlSQu0wDhCaYkEgbQIzmHaazpC0iGSatoEBuR0n0AlBLpSmaUjsAA1gCgLMy5ggudjYYCPZkizbeq3eWmkf/b+z90hXz13Ju9Kufb+Zq3t39+69q/Od/zv//9/zsOEsQF1dnUewVg6L/X5/qc1m8/BY9sX8PBQK8bVn7Pfk83rZeeVzL/fyuoZ7u91e4/V6a0tKSrxIctiQhOjo6PhiMBgsFWLKhBTuixEf1MtWI/eoJum5ubmvIcmQFATTQrOzs7cIkZvkZSnGWKMQACEADodD7bmlpKSoTX/ObSykkqhNrotAIDD8msfc+P4Y0KKrZdsp164Wwo8hwZGwBI8htcz8GYlzOp1qn5qaqgiNB0TuFeFDQ0NqI+ljUC1bVSKTnXAEU36lIMvlkMQqS6X1kcy0tDS1TWSNswESTKIHBwfVfgxIdFWiyXjCEGwQWwGTtVJy55rUyUD59vl8aqOla9BRk88qCwoKdiABMOelZhBbJYfFfE0iXS4X0tPTE47UyUDL7uvrG5Z0A/WyVcw10XNWgmMtlu0oieWWLMROhIGBAfT3948iWqS7fK6ke9ZLsrm5uVgcpCdgIpbWSmLPJkxANNvoitl2xmaV4La2tnukfaqQQ08ySvFMQOkm2UbIxWRKZX5+/gOYJcxKyY61WoY4brd7OE4926HbaHrfBijbZbNhzfEJIE2g1QqhH8hhGeVYYlu1nSvkEvxfs7KyVKU2YvZiIb2GZYM4I24WbCQq7hdp2srXTEhkZmae1XIcDcZaM0OqwsLCexEnxKW0KckSw/6OeWISynaWm4UR0AHjZrTNcZPsmBMs4c9aqaU75bBYS/K5JMfTAa25q6tLe9pxITmmbXBra+tG+dHVckgLhjzCs8idAiwbGgDLCka7LAayETFEzCxYyN0iuyoeM/yhQ2EhevT29qpwykB5rDJgMSHYTC7b2oyMDFiYPuh8sV02EBOSz5hgi9zYItYknxHBbHNlR4fKIjeGMJMs7fQmcbx2YYaYMcFGdooJDI9FbuxhItlreNe1mAFm5EUb5L4qhx46VBa5sQfL1HgA42HYKd71MswAMyLYIFeFQpa3HD+wbHUIJbEySfZM9xrTJljyp4/ASGIw9WghvmCczLKWjFep3++/H9PEtAg2HvdtZfrRylDNDnRZGz1Dt073AUXUTpbZqWL7YOWWZxd0uOh4Iex0lUab0ozagrVTxadCFrmzD5Y5yx5hp6sq2u9FRbDIArVftbuWxzx3oM9jPE8ui1aqI0q0WZrp1Z1tfaeSDeyPzSdQiFKqI1qwkEvrVdJskTv3YHcnbohSqqckmF1bZVdOD86S5sQBldToGVNmcDQppiRY1xBarhUSJQ7IhVZTo2/5pJiUYOMpkeVYJSjoVWuHayornsqCK/SFLCQedF83Yqq2eEKCzdZrOVaJC3Kju+FOZsUTEsyUGPeW9SY+IrXF4whmTWBi27Le5IBpsN6EbfE4go3B1/oxlYUEhx7jRWjuRn1ufmFkrep4bHV5TR6"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__AdminLevelLayout.layouts__OnlinePayment.layouts__SecondLevelLayout.p__404.p__AccountBinding.ed0281f9.cbe94cc3.chunk.css",
+  "contentType": "text/css",
+  "bodyPreview": "/*! pacakge version: 0.0.1, pacakge date: Tue Mar 24 2026 01:34:32 GMT+0800 (S+¡s¢+µáçsçåµù¦Tù¦) */\n.ant-row{display:flex;flex-flow:row wrap}.ant-row:after,.ant-row:before{display:flex}.ant-row-no-wrap{flex-wrap:nowrap}.ant-row-start{justify-content:flex-start}.ant-row-center{justify-content:center}.ant-row-end{justify-content:flex-end}.ant-row-space-between{justify-content:space-between}.ant-row-space-around{justify-content:space-around}.ant-row-top{align-items:flex-start}.ant-row-middle{align-items:center}.ant-row-bottom{align-items:flex-end}.ant-col{position:relative;max-width:100%;min-height:1px}.ant-col-24{display:block;flex:0 0 100%;max-width:100%}.ant-col-push-24{left:100%}.ant-col-pull-24{right:100%}.ant-col-offset-24{margin-left:100%}.ant-col-order-24{order:24}.ant-col-23{display:block;flex:0 0 95.83333333%;max-width:95.83333333%}.ant-col-push-23{left:95.83333333%}.ant-col-pull-23{right:95.83333333%}.ant-col-offset-23{margin-left:95.83333333%}.ant-col-order-23{order:23}.ant-col-22{display:block;flex:0 0 91.66666667%;max-width:91.66666667%}.ant-col-push-22{left:91.66666667%}.ant-col-pull-22{right:91.66666667%}.ant-col-offset-22{margin-left:91.66666667%}.ant-col-order-22{order:22}.ant-col-21{display:block;flex:0 0 87.5%;max-width:87.5%}.ant-col-push-21{left:87.5%}.ant-col-pull-21{right:87.5%}.ant-col-offset-21{margin-left:87.5%}.ant-col-order-21{order:21}.ant-col-20{display:block;flex:0 0 83.33333333%;max-width:83.33333333%}.ant-col-push-20{left:83.33333333%}.ant-col-pull-20{right:83.33333333%}.ant-col-offset-20{margin-left:83.33333333%}.ant-col-order-20{order:20}.ant-col-19{display:block;flex:0 0 79.16666667%;max-width:79.16666667%}.ant-col-push-19{left:79.16666667%}.ant-col-pull-19{right:79.16666667%}.ant-col-offset-19{margin-left:79.16666667%}.ant-col-order-19{order:19}.a"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__SecondLevelLayout.d1887fcb.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[8],{\"+6XX\":function(e,t,n){var a=n(\"y1pI\");function r(e){return a(this.__data__,e)>-1}e.exports=r},\"+BJd\":function(e,t,n){\"use strict\";n(\"cIOH\"),n(\"6MrE\")},\"+OC9\":function(e,t,n){var a=n(\"Jm+8\"),r=\"__lodash_hash_undefined__\";function o(e,t){var n=this.__data__;return this.size+=this.has(e)?0:1,n[e]=a&&void 0===t?r:t,this}e.exports=o},\"+QRC\":function(e,t,n){\"use strict\";var a=n(\"E9nw\"),r={\"text/plain\":\"Text\",\"text/html\":\"Url\",default:\"Text\"},o=\"Copy to clipboard: #{key}, Enter\";function c(e){var t=(/mac os x/i.test(navigator.userAgent)?\"\\u2318\":\"Ctrl\")+\"+C\";return e.replace(/#{\\s*key\\s*}/g,t)}function i(e,t){var n,i,l,s,u,d,f=!1;t||(t={}),n=t.debug||!1;try{l=a(),s=document.createRange(),u=document.getSelection(),d=document.createElement(\"span\"),d.textContent=e,d.ariaHidden=\"true\",d.style.all=\"unset\",d.style.position=\"fixed\",d.style.top=0,d.style.clip=\"rect(0, 0, 0, 0)\",d.style.whiteSpace=\"pre\",d.style.webkitUserSelect=\"text\",d.style.MozUserSelect=\"text\",d.style.msUserSelect=\"text\",d.style.userSelect=\"text\",d.addEventListener(\"copy\",(function(a){if(a.stopPropagation(),t.format)if(a.preventDefault(),\"undefined\"===typeof a.clipboardData){n&&console.warn(\"unable to use e.clipboardData\"),n&&console.warn(\"trying IE specific stuff\"),window.clipboardData.clearData();var o=r[t.format]||r[\"default\"];window.clipboardData.setData(o,e)}else a.clipboardData.clearData(),a.clipboardData.setData(t.format,e);t.onCopy&&(a.preventDefault(),t.onCopy(a.clipboardData))})),document.body.appendChild(d),s.selectNodeContents(d),u.addRange(s);var p=document.execCommand(\"copy\");if(!p)throw new Error(\"copy command was unsuccessful\");f=!0}catch(m){n&&console.error(\"unable to copy using execCommand: \",m),n&&console.warn(\"trying IE specific stuf"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/layouts__SecondLevelLayout.ef4179af.chunk.css",
+  "contentType": "text/css",
+  "bodyPreview": "/*! pacakge version: 0.0.1, pacakge date: Tue Mar 24 2026 01:34:32 GMT+0800 (S+¡s¢+µáçsçåµù¦Tù¦) */\n@media (max-width:575px){.ant-form-item .ant-form-item-label{padding:0 0 8px;line-height:1.5715;white-space:normal;text-align:left}.ant-form-item .ant-form-item-label>label{margin:0}.ant-form-item .ant-form-item-label>label:after{display:none}.ant-form-rtl.ant-form-item .ant-form-item-label{text-align:right}.ant-form .ant-form-item{flex-wrap:wrap}.ant-form .ant-form-item .ant-form-item-control,.ant-form .ant-form-item .ant-form-item-label{flex:0 0 100%;max-width:100%}.ant-col-xs-24.ant-form-item-label{padding:0 0 8px;line-height:1.5715;white-space:normal;text-align:left}.ant-col-xs-24.ant-form-item-label>label{margin:0}.ant-col-xs-24.ant-form-item-label>label:after{display:none}.ant-form-rtl.ant-col-xs-24.ant-form-item-label{text-align:right}}@media (max-width:767px){.ant-col-sm-24.ant-form-item-label{padding:0 0 8px;line-height:1.5715;white-space:normal;text-align:left}.ant-col-sm-24.ant-form-item-label>label{margin:0}.ant-col-sm-24.ant-form-item-label>label:after{display:none}.ant-form-rtl.ant-col-sm-24.ant-form-item-label{text-align:right}}@media (max-width:991px){.ant-col-md-24.ant-form-item-label{padding:0 0 8px;line-height:1.5715;white-space:normal;text-align:left}.ant-col-md-24.ant-form-item-label>label{margin:0}.ant-col-md-24.ant-form-item-label>label:after{display:none}.ant-form-rtl.ant-col-md-24.ant-form-item-label{text-align:right}}@media (max-width:1199px){.ant-col-lg-24.ant-form-item-label{padding:0 0 8px;line-height:1.5715;white-space:normal;text-align:left}.ant-col-lg-24.ant-form-item-label>label{margin:0}.ant-col-lg-24.ant-form-item-label>label:after{display:none}.ant-form-rtl.ant-col-lg-24.ant-form-item-label{text-align:right}}@media (max-width:1599px){.ant-col-xl-24"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "POST",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/menuPriv",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":[{\"route\":\"/bsnlWifiRoaming\",\"name\":\"WiFi Roaming\"},{\"route\":\"/viewAllPlans\",\"name\":\"Explore Plan\"},{\"children\":[{\"route\":\"/newconnection\",\"name\":\"Register for a New Service\"},{\"route\":\"/trackNewService\",\"name\":\"Track New Service Request\"},{\"route\":\"/basicDetails\",\"name\":\"Leased Circuit Cost Estimation\"},{\"route\":\"/updateMobNmbr\",\"name\":\"Update Mobile Number\"}],\"name\":\"New Service\"},{\"children\":[{\"route\":\"/paymentPrelogin\",\"name\":\"Payment\"},{\"route\":\"/goGreen\",\"name\":\"Go Green\"}],\"name\":\"Pay your bill\"},{\"children\":[{\"route\":\"/registerComplaints\",\"name\":\"Register Complaints\"},{\"route\":\"/registerComplaints?tab=2\",\"name\":\"Track Complaint\"}],\"name\":\"Complaints\"},{\"children\":[{\"route\":\"/contactUs\",\"name\":\"Contact Us\"},{\"route\":\"https://www.bsnl.co.in/opencms/bsnl/BSNL/faq/faq.html\",\"name\":\"FAQ\",\"target\":\"_blank\"},{\"route\":\"/franchiseInfo\",\"name\":\"Nearest Franchise\"},{\"route\":\"/nearestCentre\",\"name\":\"Nearest CSC\"},{\"route\":\"https://dq.bsnl.in/\",\"name\":\"Directory Enquiry\",\"target\":\"_blank\"},{\"route\":\"/feedback\",\"name\":\"Feedback\"}],\"name\":\"Help\"}]}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "xhr",
+  "url": "https://wsc.cdr.bsnl.co.in/i18n/app/bsnlClp/local.json",
+  "contentType": "application/json",
+  "bodyPreview": "{\n\t\"ar\":{\n\t},\n\t\"de\":{\n\t},\n\t\"en\":{\n\t\t\"btn_back_home\":\"Back to Home\",\n\t\t\"btn_check_redeem_his\":\"Check Redeem History\",\n\t\t\"btn_download_ecs_form\":\"Download ECS Form\",\n\t\t\"btn_download_nach_form\":\"Download NACH Form\",\n\t\t\"btn_ecs\":\"ECS\",\n\t\t\"btn_maybe_later\":\"Maybe Later\",\n\t\t\"btn_nach\":\"NACH\",\n\t\t\"btn_redeem_point\":\"Redeem Loyalty Points\",\n\t\t\"btn_sign_up\":\"Proceed to Sign Up\",\n\t\t\"btn_submit_feedback\":\"Submit Feedback\",\n\t\t\"btn_view_comments\":\"View Comments\",\n\t\t\"btn_what_is_ecs_nach\":\"What is ECS and NACH?\",\n\t\t\"lb_a_lot\":\"A lot\",\n\t\t\"lb_acct_can_be_synced\":\"Avaible to add\",\n\t\t\"lb_acct_cannot_be_synced\":\"Cannot be synced\",\n\t\t\"lb_add_wsc_should_del_previouse\":\"Added to other WSC&APP should delete from previouse one first.\",\n\t\t\"lb_air_fiber\":\"Bharat Air Fiber\",\n\t\t\"lb_air_fiber_desc1\":\"No Fixed monthly charges\",\n\t\t\"lb_air_fiber_desc2\":\"No Installation / activation charges\",\n\t\t\"lb_air_fiber_desc3\":\"Free Unlimited High speed Data\",\n\t\t\"lb_air_fiber_desc4\":\"Additional Phone Plus services available\",\n\t\t\"lb_already_have_account\":\"Already have an account?\",\n\t\t\"lb_any_suggestions\":\"Any other Suggestions?\",\n\t\t\"lb_ao_check\":\"AO Check\",\n\t\t\"lb_avail_points\":\"Available Loyalty Points\",\n\t\t\"lb_billing_ac\":\"Billing A/C\",\n\t\t\"lb_billing_addr_same_as_install_addr\":\"Billing address same as installation address\",\n\t\t\"lb_broadband\":\"Broadband\",\n\t\t\"lb_broadband_desc1\":\"No Fixed monthly charges\",\n\t\t\"lb_broadband_desc2\":\"No Installation / activation charges\",\n\t\t\"lb_broadband_desc3\":\"Free Unlimited High speed Data\",\n\t\t\"lb_broadband_desc4\":\"Additional Phone Plus services available\",\n\t\t\"lb_cg_enter_short_number\":\"Enter Short Number (IP Centrex required)\",\n\t\t\"lb_change_your_payment_method\":\"Change Your Method of Payment\",\n\t\t\"lb_check_trans_his\":\"Check Loyalty Transaction History\",\n\t\t\"lb_choose_acct_to_sync\":\"Choos"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.function.switch",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":{\"payment\":\"Y\"}}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=webs.ecare.prefix.default",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":\"91\"}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=spi.common.currency-type",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":{\"currencySymbol\":\"Gé¦\",\"savePrecision\":10000000,\"displayScale\":2,\"roundMode\":1}}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.template-file.config",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":{\"batchLeadTemplate\":\"/bsnl/cloud/Batch_Lead_Template.xlsx\",\"batchTicketTemplate\":\"/bsnl/cloud/Batch_Ticket_Template.xlsx\",\"loyaltyPointTerm\":\"/bsnl/cloud/Loyalty_Point_Term_Condition_1644396780509.pdf\",\"ecsPaymentMethod\":\"/bsnl/cloud/ECS_Form_BSNL_1644396693688.pdf\",\"nachPaymentMethod\":\"/bsnl/cloud/NACH_Mandate_1644396809524.pdf\",\"loyaltyPointFaqs\":\"/bsnl/cloud/Loyalty_Point_FAQs_1644396738491.pdf\",\"paymenthodDes\":\"/bsnl/cloud/What_is_ECS_and_NACH.pdf\"}}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.proof-file.config",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":{\"maxSize\":\"5\",\"fileType\":\"jpg,jpeg,bmp,pdf,tif\"}}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.plan-detail.service-types",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":\"26,79,890,51,931\"}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.user.logout-notice",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":{\"duration\":\"5\",\"advancedTime\":\"1\"}}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "stylesheet",
+  "url": "https://wsc.cdr.bsnl.co.in/p__ViewAllPlans.f3f892a8.chunk.css",
+  "contentType": "text/css",
+  "bodyPreview": "/*! pacakge version: 0.0.1, pacakge date: Tue Mar 24 2026 01:34:32 GMT+0800 (S+¡s¢+µáçsçåµù¦Tù¦) */\n.ant-checkbox-input:focus+.ant-checkbox-inner,.ant-checkbox-wrapper:hover .ant-checkbox-inner,.ant-checkbox:hover .ant-checkbox-inner{border-color:#0161b0}.ant-checkbox-checked:after{border:1px solid #0161b0}.ant-checkbox-checked .ant-checkbox-inner{background-color:#0161b0;border-color:#0161b0}.ant-checkbox-indeterminate .ant-checkbox-inner:after{background-color:#0161b0}.ant-radio-input:focus+.ant-radio-inner,.ant-radio-wrapper:hover .ant-radio,.ant-radio:hover .ant-radio-inner{border-color:#0161b0}.ant-radio-input:focus+.ant-radio-inner{box-shadow:0 0 0 3px rgba(1,97,176,.08)}.ant-radio-checked:after{border:1px solid #0161b0}.ant-radio-inner:after{background-color:#0161b0}.ant-radio-checked .ant-radio-inner{border-color:#0161b0}.ant-radio-button-wrapper:hover{color:#0161b0}.ant-radio-button-wrapper:focus-within{box-shadow:0 0 0 3px rgba(1,97,176,.08)}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled){color:#0161b0;border-color:#0161b0}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):before{background-color:#0161b0}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child{border-color:#0161b0}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover{color:#207bbd;border-color:#207bbd}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover:before{background-color:#207bbd}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active{color:#00478a;border-color:#00478a}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active:before{background-color:#00478a}.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disa"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "other",
+  "url": "https://wsc.cdr.bsnl.co.in/images/bsnlBharat1.png",
+  "contentType": "image/png",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "other",
+  "url": "https://wsc.cdr.bsnl.co.in/images/bsnlBharat1.png",
+  "contentType": "image/png",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "font",
+  "url": "https://wsc.cdr.bsnl.co.in/static/Roboto-Regular.cd8b50e3.woff2",
+  "contentType": "font/woff2",
+  "bodyPreview": ""
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "script",
+  "url": "https://wsc.cdr.bsnl.co.in/p__ViewAllPlans.f87c2b45.async.js",
+  "contentType": "application/javascript",
+  "bodyPreview": "(window[\"webpackJsonp\"]=window[\"webpackJsonp\"]||[]).push([[112],{\"+6XX\":function(e,t,n){var a=n(\"y1pI\");function r(e){return a(this.__data__,e)>-1}e.exports=r},\"+BJd\":function(e,t,n){\"use strict\";n(\"cIOH\"),n(\"6MrE\")},\"+OC9\":function(e,t,n){var a=n(\"Jm+8\"),r=\"__lodash_hash_undefined__\";function o(e,t){var n=this.__data__;return this.size+=this.has(e)?0:1,n[e]=a&&void 0===t?r:t,this}e.exports=o},\"+QRC\":function(e,t,n){\"use strict\";var a=n(\"E9nw\"),r={\"text/plain\":\"Text\",\"text/html\":\"Url\",default:\"Text\"},o=\"Copy to clipboard: #{key}, Enter\";function c(e){var t=(/mac os x/i.test(navigator.userAgent)?\"\\u2318\":\"Ctrl\")+\"+C\";return e.replace(/#{\\s*key\\s*}/g,t)}function i(e,t){var n,i,l,s,u,d,f=!1;t||(t={}),n=t.debug||!1;try{l=a(),s=document.createRange(),u=document.getSelection(),d=document.createElement(\"span\"),d.textContent=e,d.ariaHidden=\"true\",d.style.all=\"unset\",d.style.position=\"fixed\",d.style.top=0,d.style.clip=\"rect(0, 0, 0, 0)\",d.style.whiteSpace=\"pre\",d.style.webkitUserSelect=\"text\",d.style.MozUserSelect=\"text\",d.style.msUserSelect=\"text\",d.style.userSelect=\"text\",d.addEventListener(\"copy\",(function(a){if(a.stopPropagation(),t.format)if(a.preventDefault(),\"undefined\"===typeof a.clipboardData){n&&console.warn(\"unable to use e.clipboardData\"),n&&console.warn(\"trying IE specific stuff\"),window.clipboardData.clearData();var o=r[t.format]||r[\"default\"];window.clipboardData.setData(o,e)}else a.clipboardData.clearData(),a.clipboardData.setData(t.format,e);t.onCopy&&(a.preventDefault(),t.onCopy(a.clipboardData))})),document.body.appendChild(d),s.selectNodeContents(d),u.addRange(s);var p=document.execCommand(\"copy\");if(!p)throw new Error(\"copy command was unsuccessful\");f=!0}catch(m){n&&console.error(\"unable to copy using execCommand: \",m),n&&console.warn(\"trying IE specific st"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.password.reg-rule",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":\"^(?=.*[0-9].*)(?=.*[A-Z].*)(?!.* .*).{8,}$\"}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/bsnl/area/qryAllStateList",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"areaList\":[{\"areaId\":\"167221\",\"areaName\":\"KARNATAKA\",\"areaCode\":\"KT\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"167222\",\"areaName\":\"TAMILNADU\",\"areaCode\":\"TN\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"167223\",\"areaName\":\"ANDHRA PRADESH\",\"areaCode\":\"AP\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"167224\",\"areaName\":\"KERALA\",\"areaCode\":\"KL\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"500418\",\"areaName\":\"MB\",\"areaCode\":\"500418\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190106\",\"areaName\":\"NORTH EAST II\",\"areaCode\":\"N2\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190109\",\"areaName\":\"KOLKATA\",\"areaCode\":\"KO\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190103\",\"areaName\":\"JHARKHAND\",\"areaCode\":\"JH\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190110\",\"areaName\":\"ASSAM\",\"areaCode\":\"AS\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190105\",\"areaName\":\"WEST BENGAL\",\"areaCode\":\"WB\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190108\",\"areaName\":\"NORTHEAST-1\",\"areaCode\":\"N1\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190107\",\"areaName\":\"ORISSA\",\"areaCode\":\"OR\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"190104\",\"areaName\":\"ANDAMAN AND NICOBAR\",\"areaCode\":\"AN\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"250814\",\"areaName\":\"CHENNAI STP\",\"areaCode\":\"CS\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"178339\",\"areaName\":\"MEDIAX LOCATION FOR MMVC\",\"areaCode\":\"WMMVCX\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"196626\",\"areaName\":\"UTTAR PRADESH (EAST)\",\"areaCode\":\"UE\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"196633\",\"areaName\":\"JAMMU AND KASHMIR\",\"areaCode\":\"JK\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"196632\",\"areaName\":\"Uttaranchal\",\"areaCode\":\"UT\",\"level\":null,\"zoneCode\":null},{\"areaId\":\"196628\",\"areaName\":\"UTTAR PRADESH WEST\",\"areaCode\":\"UW\",\"level\":null,\"zoneCode\":null},"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "POST",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/bsnl/offer/hotPlanList",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"errorCode\":null,\"errorMessage\":null,\"hotPlanList\":[{\"subsPlanId\":610507,\"orderCount\":104,\"isHot\":\"Y\"},{\"subsPlanId\":610444,\"orderCount\":48,\"isHot\":\"Y\"},{\"subsPlanId\":610425,\"orderCount\":139,\"isHot\":\"Y\"},{\"subsPlanId\":610406,\"orderCount\":48,\"isHot\":\"Y\"},{\"subsPlanId\":610387,\"orderCount\":23,\"isHot\":\"Y\"},{\"subsPlanId\":610368,\"orderCount\":298,\"isHot\":\"Y\"},{\"subsPlanId\":610349,\"orderCount\":478,\"isHot\":\"Y\"},{\"subsPlanId\":610330,\"orderCount\":272,\"isHot\":\"Y\"},{\"subsPlanId\":610311,\"orderCount\":115,\"isHot\":\"Y\"},{\"subsPlanId\":610207,\"orderCount\":32,\"isHot\":\"Y\"},{\"subsPlanId\":609707,\"orderCount\":32,\"isHot\":\"Y\"},{\"subsPlanId\":402848,\"orderCount\":3,\"isHot\":\"Y\"},{\"subsPlanId\":402824,\"orderCount\":3654,\"isHot\":\"Y\"},{\"subsPlanId\":402803,\"orderCount\":1186,\"isHot\":\"Y\"},{\"subsPlanId\":402773,\"orderCount\":674,\"isHot\":\"Y\"},{\"subsPlanId\":402547,\"orderCount\":5535,\"isHot\":\"Y\"},{\"subsPlanId\":402348,\"orderCount\":110,\"isHot\":\"Y\"},{\"subsPlanId\":402328,\"orderCount\":97,\"isHot\":\"Y\"},{\"subsPlanId\":402321,\"orderCount\":10,\"isHot\":\"Y\"},{\"subsPlanId\":402304,\"orderCount\":4,\"isHot\":\"Y\"},{\"subsPlanId\":402292,\"orderCount\":22,\"isHot\":\"Y\"},{\"subsPlanId\":402242,\"orderCount\":137,\"isHot\":\"Y\"},{\"subsPlanId\":402060,\"orderCount\":16566,\"isHot\":\"Y\"},{\"subsPlanId\":401895,\"orderCount\":34004,\"isHot\":\"Y\"},{\"subsPlanId\":401888,\"orderCount\":8020,\"isHot\":\"Y\"},{\"subsPlanId\":401535,\"orderCount\":3385,\"isHot\":\"Y\"},{\"subsPlanId\":401507,\"orderCount\":7904,\"isHot\":\"Y\"},{\"subsPlanId\":278726,\"orderCount\":3,\"isHot\":\"Y\"},{\"subsPlanId\":177783,\"orderCount\":14117,\"isHot\":\"Y\"},{\"subsPlanId\":177782,\"orderCount\":160601,\"isHot\":\"Y\"},{\"subsPlanId\":177455,\"orderCount\":7581,\"isHot\":\"Y\"},{\"subsPlanId\":177441,\"orderCount\":54683,\"isHot\":\"Y\"},{\"subsPlanId\":177398,\"orderCount\":125721,\"isHot\":\"Y\"},{"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.bsnl.view-all-plans.catalog",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":[{\"catgCode\":\"FTTH OTT_Combo_Plan\",\"catgName\":\"Bharat Fiber Broadband OTT\"},{\"catgCode\":\"Fiber_Combo\",\"catgName\":\"Bharat Fiber Broadband\"},{\"catgCode\":\"BB_Combo\",\"catgName\":\"ADSL Broadband\"},{\"catgCode\":\"Air_Fiber_Combo\",\"catgName\":\"Bharat Air Fiber Broadband\"},{\"catgCode\":\"LANDLINE\",\"catgName\":\"Landline\"}]}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "GET",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/common/system/configParam?configCode=ecare.notification.otp.countdown",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"configValue\":\"120\"}}"
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "POST",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/bsnl/offer/list",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"offerList\":[{\"offerId\":177370,\"offerNbr\":null,\"offerType\":\"2\",\"offerName\":\"Fibre Silver Plus OTT\",\"offerCode\":\"WDC_177370\",\"brief\":\"<p>Speed:Up to 300 Mbps till 5000 GB<br>Fup_Speed:30 Mbps beyond 5000 GB<br>Data_Download:Unlimited Data Download<br>Local_Std:Unlimited calls to any network<br>Unlimit_Timing:Free OTT:Hotstar,Lions Gate, Shemaroo,Hungama</p>\",\"description\":null,\"offerGrade\":null,\"needEkyc\":null,\"thumbImageUrl\":null,\"imageUrl\":null,\"documentUrl\":null,\"documentUrlList\":null,\"salesVolume\":null,\"state\":null,\"otcPrice\":27990000000,\"displayOtcPrice\":\"2799.00\",\"rentPrice\":27990000000,\"displayRentPrice\":\"2799.00\",\"floorRentPrice\":null,\"displayFloorRentPrice\":\"0.00\",\"rentDuration\":null,\"rentUnitName\":null,\"precision\":10000000,\"currencySymbol\":\"Gé¦\",\"duplicateFlag\":null,\"validityPeriod\":null,\"validityPeriodUnit\":null,\"guidingPrice\":27990000000,\"displayGuidingPrice\":\"2799.00\",\"richComments\":null,\"rating\":null,\"ratingCount\":null,\"offerAttrList\":null,\"offerEffExpCtgList\":null,\"oneTimeChargeList\":null,\"offerCompositionList\":null,\"offerRelaList\":null,\"offerResourceList\":null,\"tagList\":[{\"tagId\":23,\"tagCode\":\"FBB-BUNDLED-OTT\",\"tagName\":\"FBB-BUNDLED-OTT\",\"seq\":null}],\"relatedOfferId\":177370,\"relatedOfferCode\":\"WDC_177370\",\"postpaid\":null,\"additionalDescriptionList\":null,\"offerExtMap\":null,\"imageList\":null,\"rentUnitType\":null,\"documentList\":null,\"sellableFlag\":null,\"serviceType\":null,\"serviceTypeCode\":null,\"quitable\":false,\"agreementPeriod\":null,\"agreementPeriodUnit\":null,\"paidFlag\":null,\"displayGuidingRentPrice\":null,\"guidingRentPrice\":null,\"esimFlag\":null,\"portInFlag\":\"N\",\"prodType\":null,\"modelId\":null},{\"offerId\":177366,\"offerNbr\":null,\"offerType\":\"2\",\"offerName\":\"SuperStar PremiumPlus OTT\",\"offerCode\":\"WDC_177366\","
+--- NETWORK RESPONSE ---
+  "status": 200,
+  "method": "POST",
+  "type": "fetch",
+  "url": "https://wsc.cdr.bsnl.co.in/ecare/bsnl/offer/list",
+  "contentType": "application/json;charset=UTF-8",
+  "bodyPreview": "{\"code\":\"200\",\"resultCode\":null,\"resultMsg\":null,\"data\":{\"offerList\":[{\"offerId\":177370,\"offerNbr\":null,\"offerType\":\"2\",\"offerName\":\"Fibre Silver Plus OTT\",\"offerCode\":\"WDC_177370\",\"brief\":\"<p>Speed:Up to 300 Mbps till 5000 GB<br>Fup_Speed:30 Mbps beyond 5000 GB<br>Data_Download:Unlimited Data Download<br>Local_Std:Unlimited calls to any network<br>Unlimit_Timing:Free OTT:Hotstar,Lions Gate, Shemaroo,Hungama</p>\",\"description\":null,\"offerGrade\":null,\"needEkyc\":null,\"thumbImageUrl\":null,\"imageUrl\":null,\"documentUrl\":null,\"documentUrlList\":null,\"salesVolume\":null,\"state\":null,\"otcPrice\":27990000000,\"displayOtcPrice\":\"2799.00\",\"rentPrice\":27990000000,\"displayRentPrice\":\"2799.00\",\"floorRentPrice\":null,\"displayFloorRentPrice\":\"0.00\",\"rentDuration\":null,\"rentUnitName\":null,\"precision\":10000000,\"currencySymbol\":\"Gé¦\",\"duplicateFlag\":null,\"validityPeriod\":null,\"validityPeriodUnit\":null,\"guidingPrice\":27990000000,\"displayGuidingPrice\":\"2799.00\",\"richComments\":null,\"rating\":null,\"ratingCount\":null,\"offerAttrList\":null,\"offerEffExpCtgList\":null,\"oneTimeChargeList\":null,\"offerCompositionList\":null,\"offerRelaList\":null,\"offerResourceList\":null,\"tagList\":[{\"tagId\":23,\"tagCode\":\"FBB-BUNDLED-OTT\",\"tagName\":\"FBB-BUNDLED-OTT\",\"seq\":null}],\"relatedOfferId\":177370,\"relatedOfferCode\":\"WDC_177370\",\"postpaid\":null,\"additionalDescriptionList\":null,\"offerExtMap\":null,\"imageList\":null,\"rentUnitType\":null,\"documentList\":null,\"sellableFlag\":null,\"serviceType\":null,\"serviceTypeCode\":null,\"quitable\":false,\"agreementPeriod\":null,\"agreementPeriodUnit\":null,\"paidFlag\":null,\"displayGuidingRentPrice\":null,\"guidingRentPrice\":null,\"esimFlag\":null,\"portInFlag\":\"N\",\"prodType\":null,\"modelId\":null},{\"offerId\":177366,\"offerNbr\":null,\"offerType\":\"2\",\"offerName\":\"SuperStar PremiumPlus OTT\",\"offerCode\":\"WDC_177366\","
