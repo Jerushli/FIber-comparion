@@ -22,9 +22,7 @@ function parsePriceLine(line = "") {
 
   return {
     price: Number(match[1].replace(/,/g, "")),
-    billingPeriodMonths: match[2]
-      ? Number(match[2])
-      : null
+    billingPeriodMonths: match[2] ? Number(match[2]) : null
   };
 }
 
@@ -54,7 +52,6 @@ function extractTataPlayPlans(markdown = "") {
 
     const price = parsePriceLine(priceLine || "");
     const block = section.join("\n");
-
     const speedMatch = block.match(
       /\*{0,2}\s*(\d+(?:\.\d+)?)\s*\*{0,2}\s*Mbps/i
     );
@@ -75,14 +72,12 @@ function extractTataPlayPlans(markdown = "") {
       currency: "INR",
       priceBasis: "before_gst",
       billingPeriodMonths,
-      totalBaseAmount:
-        billingPeriodMonths !== null
-          ? price.price * billingPeriodMonths
-          : null,
-      totalBaseAmountBasis:
-        billingPeriodMonths !== null
-          ? "calculated_price_times_billing_months_before_gst"
-          : null,
+      totalBaseAmount: billingPeriodMonths !== null
+        ? price.price * billingPeriodMonths
+        : null,
+      totalBaseAmountBasis: billingPeriodMonths !== null
+        ? "calculated_price_times_billing_months_before_gst"
+        : null,
       speedMbps: Number(speedMatch[1]),
       benefits: benefitLine
         ? cleanText(benefitLine.replace(/^\s*[-*]\s*/, ""))
@@ -122,8 +117,9 @@ export function extractAirtelPlans(text = "") {
   for (let i = 0; i < matches.length; i++) {
     const match = matches[i];
     const start = match.index;
-    const end =
-      i + 1 < matches.length ? matches[i + 1].index : content.length;
+    const end = i + 1 < matches.length
+      ? matches[i + 1].index
+      : content.length;
 
     const section = content.slice(start, end);
     const speedMatch = section.match(/(\d[\d,]*(?:\.\d+)?)\s*Mbps/i);
@@ -133,7 +129,12 @@ export function extractAirtelPlans(text = "") {
     const price = Number(match[1].replace(/,/g, ""));
     const speedMbps = Number(speedMatch[1].replace(/,/g, ""));
 
-    if (!Number.isFinite(price) || !Number.isFinite(speedMbps)) continue;
+    if (
+      !Number.isFinite(price) ||
+      !Number.isFinite(speedMbps) ||
+      price <= 0 ||
+      speedMbps <= 0
+    ) continue;
 
     const cardText = cleanText(
       section
@@ -170,92 +171,153 @@ export function extractAirtelPlans(text = "") {
   });
 }
 
+function validPrice(value) {
+  if (value === null || value === undefined || String(value).trim() === "") {
+    return null;
+  }
+
+  const price = Number(String(value).replace(/[â‚¹,\s]/g, ""));
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+
+function getMonthlyOption(offer) {
+  const options = offer?.offerExtMap?.dppOfferDtoList;
+
+  if (!Array.isArray(options)) return null;
+
+  const monthlyOptions = options.filter((option) => {
+    const name = String(option?.offerName ?? "");
+    const months = Number(option?.leaseOfMonth);
+    const lease = Number(option?.lease);
+
+    return (
+      /\bmonthly\b|\bmonth\b/i.test(name) ||
+      months === 1 ||
+      lease === 1
+    );
+  });
+
+  monthlyOptions.sort((a, b) => {
+    const aDefault = String(a?.defaultFlag).toUpperCase() === "Y" ? 1 : 0;
+    const bDefault = String(b?.defaultFlag).toUpperCase() === "Y" ? 1 : 0;
+    return bDefault - aDefault;
+  });
+
+  return monthlyOptions.find((option) => {
+    const name = String(option?.offerName ?? "");
+    const months = Number(option?.leaseOfMonth);
+    const lease = Number(option?.lease);
+
+    return (
+      /\bmonthly\b|\bmonth\b/i.test(name) ||
+      months === 1 ||
+      lease === 1
+    ) && validPrice(option?.mrcDisplay) !== null;
+  }) ?? null;
+}
+
+function cleanBsnlCustomerText(brief = "") {
+  return cleanText(brief)
+    .replace(/\bGuiding_Price\s*:\s*[^ ]+/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function extractBsnlApiPlans(offers = []) {
   if (!Array.isArray(offers)) return [];
 
   return offers.map((offer) => {
-    const brief = cleanText(offer.brief || "");
+    const originalBrief = cleanText(offer.brief || "");
+    const customerText = cleanBsnlCustomerText(originalBrief);
 
-    const speedMatch = brief.match(
-      /Speed\s*:\s*(?:Up\s*to|Upto)\s*(\d+(?:\.\d+)?)\s*Mbps/i
+    const speedMatch = originalBrief.match(
+      /Speed\s*:\s*(?:Up\s*to|Upto)\s*(\d+(?:\.\d+)?)\s*(Mbps|Gbps|GBPS)\b/i
     );
 
-    // "till X GB" is a speed-threshold allowance, not necessarily
-    // a hard data cap. Keep it separate from dataLimitGb.
-    const speedThresholdMatch = brief.match(
+    const speedThresholdMatch = originalBrief.match(
       /Speed\s*:\s*.*?\btill\s*([\d,]+(?:\.\d+)?)\s*GB/i
     );
 
-    const reducedSpeedMatch = brief.match(
-      /Fup_Speed\s*:\s*(?:Up\s*to|Upto)?\s*(\d+(?:\.\d+)?)\s*Mbps/i
+    const reducedSpeedMatch = originalBrief.match(
+      /Fup_Speed\s*:\s*(?:Up\s*to|Upto)?\s*(\d+(?:\.\d+)?)\s*(Mbps|Gbps|GBPS)\b/i
     );
 
-    const unlimitedMatch = /\bData_Download\s*:\s*UNLIMITED\b/i.test(brief);
+    const unlimitedMatch =
+      /\bData_Download\s*:\s*UNLIMITED\b/i.test(originalBrief);
 
-    const priceText = offer.displayRentPrice;
-    const displayedPrice =
-      priceText !== null &&
-      priceText !== undefined &&
-      String(priceText).trim() !== ""
-        ? Number(priceText)
-        : null;
+    const displayedPrice = validPrice(offer.displayRentPrice);
+    const monthlyOption = getMonthlyOption(offer);
+    const monthlyOptionPrice = validPrice(monthlyOption?.mrcDisplay);
 
     const rentUnit = cleanText(offer.rentUnitName || "");
     const hasMonthlyUnit = /month/i.test(rentUnit);
 
-    const monthlyPrice =
-      hasMonthlyUnit && Number.isFinite(displayedPrice)
+    const monthlyPrice = monthlyOptionPrice !== null
+      ? monthlyOptionPrice
+      : hasMonthlyUnit
         ? displayedPrice
         : null;
 
     if (
       !offer.offerName ||
-      !Number.isFinite(displayedPrice) ||
-      !speedMatch
+      !speedMatch ||
+      (displayedPrice === null && monthlyPrice === null)
     ) {
       return null;
     }
 
+    const speedValue = Number(speedMatch[1]);
+    const speedUnit = speedMatch[2].toLowerCase();
+    const speedMbps = speedUnit === "gbps"
+      ? speedValue * 1000
+      : speedValue;
+
+    const reducedSpeedValue = reducedSpeedMatch
+      ? Number(reducedSpeedMatch[1])
+      : null;
+
+    const reducedSpeedMbps = reducedSpeedValue === null
+      ? null
+      : reducedSpeedMatch[2].toLowerCase() === "gbps"
+        ? reducedSpeedValue * 1000
+        : reducedSpeedValue;
+
+    const speedThresholdGb = speedThresholdMatch
+      ? Number(speedThresholdMatch[1].replace(/,/g, ""))
+      : null;
+
+    const benefits = customerText || null;
+
     return {
       providerId: "bsnl",
       planName: cleanText(offer.offerName),
-      description: brief || null,
-
+      description: benefits,
       monthlyPrice,
       displayedPrice,
       currency: "INR",
-
       priceBasis: monthlyPrice !== null
-        ? "provider_rent_price_per_month"
+        ? monthlyOptionPrice !== null
+          ? "provider_monthly_recurring_charge"
+          : "provider_rent_price_per_month"
         : "provider_displayed_rent_price_period_unverified",
-
-      billingPeriod: rentUnit || null,
-
-      speedMbps: Number(speedMatch[1]),
-
-      // Do not call a speed threshold a hard data cap.
+      billingPeriod: monthlyPrice !== null
+        ? "Monthly"
+        : rentUnit || null,
+      speedMbps,
       dataLimitGb: null,
-      speedThresholdGb: speedThresholdMatch
-        ? Number(speedThresholdMatch[1].replace(/,/g, ""))
-        : null,
-
-      dataDownloadPolicy: unlimitedMatch
-        ? "unlimited"
-        : "not_verified",
-
-      reducedSpeedMbps: reducedSpeedMatch
-        ? Number(reducedSpeedMatch[1])
-        : null,
-
-      benefits: brief || null,
+      speedThresholdGb,
+      dataDownloadPolicy: unlimitedMatch ? "unlimited" : "not_verified",
+      reducedSpeedMbps,
+      benefits,
       source: "live_bsnl_api",
-
       sourceEvidence: {
         offerId: offer.offerId ?? null,
         offerCode: offer.offerCode ?? null,
         displayedRentPrice: offer.displayRentPrice ?? null,
         rentUnitName: rentUnit || null,
-        originalBrief: brief
+        monthlyOptionName: monthlyOption?.offerName ?? null,
+        monthlyOptionPrice: monthlyOption?.mrcDisplay ?? null,
+        originalBrief
       }
     };
   }).filter(Boolean);

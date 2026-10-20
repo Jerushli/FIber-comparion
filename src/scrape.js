@@ -9,15 +9,15 @@ import {
 
 const NAVIGATION_TIMEOUT_MS = 60000;
 const PLAN_WAIT_TIMEOUT_MS = 10000;
+const BSNL_API_TIMEOUT_MS = 30000;
+const BSNL_AREA_NAME = "CHENNAI STP";
+const BSNL_CATEGORY_CODE = "Fiber_Combo";
 
 async function openLocalPage(timings = {}) {
-  const launchStarted = Date.now();
+  const started = Date.now();
+  const browser = await chromium.launch({ headless: true });
 
-  const browser = await chromium.launch({
-    headless: true
-  });
-
-  timings.browserLaunchMs = Date.now() - launchStarted;
+  timings.browserLaunchMs = Date.now() - started;
 
   try {
     const context = await browser.newContext({
@@ -49,6 +49,17 @@ async function closeLocalPage(connection, timings = {}) {
   timings.cleanupMs = Date.now() - started;
 }
 
+async function navigateToProvider(page, provider, timings) {
+  const started = Date.now();
+  const response = await page.goto(provider.url, {
+    waitUntil: "domcontentloaded",
+    timeout: NAVIGATION_TIMEOUT_MS
+  });
+
+  timings.navigationMs = Date.now() - started;
+  return response;
+}
+
 async function waitForPlanText(page) {
   const started = Date.now();
 
@@ -56,7 +67,6 @@ async function waitForPlanText(page) {
     await page.waitForFunction(
       () => {
         const text = document.body?.innerText ?? "";
-
         return (
           /₹|â‚¹|\bRs\.?\s*\d/i.test(text) &&
           /\b(?:Mbps|Gbps)\b/i.test(text)
@@ -66,36 +76,17 @@ async function waitForPlanText(page) {
       { timeout: PLAN_WAIT_TIMEOUT_MS }
     );
   } catch {
-    // Continue so the extractor can determine whether usable
-    // plan information was returned.
+    // Let extraction report whether usable plans were found.
   }
 
   return Date.now() - started;
 }
 
-async function navigateToProvider(page, provider, timings) {
-  const started = Date.now();
-
-  const response = await page.goto(provider.url, {
-    waitUntil: "domcontentloaded",
-    timeout: NAVIGATION_TIMEOUT_MS
-  });
-
-  timings.navigationMs = Date.now() - started;
-
-  return response;
-}
-
 async function readRenderedText(page, timings) {
   const started = Date.now();
-
-  const renderedText = await page.locator("body").innerText({
-    timeout: 15000
-  });
-
+  const text = await page.locator("body").innerText({ timeout: 15000 });
   timings.readTextMs = Date.now() - started;
-
-  return renderedText;
+  return text;
 }
 
 async function scrapeAirtelLive(provider) {
@@ -106,19 +97,88 @@ async function scrapeAirtelLive(provider) {
     connection = await openLocalPage(timings);
     const { page } = connection;
 
-    const response = await navigateToProvider(
-      page,
-      provider,
-      timings
-    );
-
+    const response = await navigateToProvider(page, provider, timings);
     timings.readinessWaitMs = await waitForPlanText(page);
 
-    const renderedText = await readRenderedText(page, timings);
-
     const extractionStarted = Date.now();
-    const plans = extractAirtelPlans(renderedText);
+
+    const cardResults = await page.locator(".card").evaluateAll((cards) =>
+      cards.map((card) => {
+        const header = card.querySelector(".card-header");
+        if (!header) return null;
+
+        const headerText = (header.innerText || "").trim();
+
+        const priceMatch = headerText.match(
+          /\u20B9\s*([\d,]+(?:\.\d{1,2})?)\s*\/\s*m\s*\+\s*GST/i
+        );
+
+        const speedMatch = headerText.match(
+          /(\d[\d,]*(?:\.\d+)?)\s*Mbps/i
+        );
+
+        if (!priceMatch || !speedMatch) return null;
+
+        const price = Number(priceMatch[1].replace(/,/g, ""));
+        const speedMbps = Number(speedMatch[1].replace(/,/g, ""));
+
+        if (
+          !Number.isFinite(price) ||
+          !Number.isFinite(speedMbps) ||
+          price <= 0 ||
+          speedMbps <= 0
+        ) {
+          return null;
+        }
+
+        return {
+          price,
+          speedMbps,
+          headerText: headerText.replace(/\s+/g, " ").trim(),
+          cardText: (card.innerText || "").replace(/\s+/g, " ").trim()
+        };
+      }).filter(Boolean)
+    );
+
+    const seen = new Set();
+
+    const plans = cardResults
+      .filter((item) => {
+        const key = `${item.price}|${item.speedMbps}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .map((item) => {
+        const benefits = item.headerText
+          .replace(/\u20B9\s*[\d,]+(?:\.\d{1,2})?\s*\/\s*m\s*\+\s*GST/i, "")
+          .replace(/\d[\d,]*(?:\.\d+)?\s*Mbps/i, "")
+          .replace(/\bspeed\b/gi, "")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        return {
+          providerId: "airtel",
+          planName: `Airtel \u20B9${item.price.toLocaleString("en-IN")} plan`,
+          description: benefits || null,
+          monthlyPrice: item.price,
+          currency: "INR",
+          priceBasis: "before_gst",
+          billingPeriodMonths: 1,
+          speedMbps: item.speedMbps,
+          benefits: benefits || null,
+          source: "live_browser_render",
+          sourceEvidence: {
+            priceLine: `\u20B9${item.price} /m+GST`,
+            speedMbps: item.speedMbps,
+            cardHeader: item.headerText
+          }
+        };
+      });
+
     timings.extractionMs = Date.now() - extractionStarted;
+
+    const renderedText = await readRenderedText(page, timings);
 
     return {
       plans,
@@ -128,14 +188,13 @@ async function scrapeAirtelLive(provider) {
       renderedText,
       stageTimingsMs: timings,
       note: plans.length
-        ? "Plans extracted from Airtel's live rendered Chennai page. Prices are before GST; confirm plan terms and address-level availability."
-        : "Airtel loaded, but no usable price and speed pairs were extracted."
+        ? "Plans extracted from individual Airtel plan cards on the live rendered page. Prices are before GST; confirm plan terms and address-level availability."
+        : "Airtel loaded, but no usable price and speed pairs were extracted from its plan cards."
     };
   } finally {
     await closeLocalPage(connection, timings);
   }
 }
-
 function extractTataPlayBrowserPlans(renderedText) {
   const lines = String(renderedText)
     .split(/\r?\n/)
@@ -159,7 +218,6 @@ function extractTataPlayBrowserPlans(renderedText) {
     }
 
     const currency = String.raw`(?:₹|â‚¹|Rs\.?)`;
-
     const priceLine = section.find((line) =>
       new RegExp(
         `${currency}\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*\\+\\s*GST(?:\\s+X\\s+\\d+\\s+Months?)?`,
@@ -182,28 +240,21 @@ function extractTataPlayBrowserPlans(renderedText) {
     if (!priceMatch || !speedMatch) continue;
 
     const price = Number(priceMatch[1].replace(/,/g, ""));
-
     const billingPeriodMonths = priceMatch[2]
       ? Number(priceMatch[2])
       : null;
 
-    const speedValue = Number(
-      speedMatch[1].replace(/,/g, "")
-    );
-
-    const speedMbps =
-      speedMatch[2].toLowerCase() === "gbps"
-        ? speedValue * 1000
-        : speedValue;
+    const speedValue = Number(speedMatch[1].replace(/,/g, ""));
+    const speedMbps = speedMatch[2].toLowerCase() === "gbps"
+      ? speedValue * 1000
+      : speedValue;
 
     if (
       !Number.isFinite(price) ||
       !Number.isFinite(speedMbps) ||
       price <= 0 ||
       speedMbps <= 0
-    ) {
-      continue;
-    }
+    ) continue;
 
     const benefitLine = section.find((line) =>
       /^Benefits\s*-/i.test(line)
@@ -226,10 +277,7 @@ function extractTataPlayBrowserPlans(renderedText) {
       speedMbps,
       benefits: benefitLine || null,
       source: "live_browser_render",
-      sourceEvidence: {
-        priceLine,
-        speedLine
-      }
+      sourceEvidence: { priceLine, speedLine }
     });
   }
 
@@ -244,7 +292,6 @@ function extractTataPlayBrowserPlans(renderedText) {
     ].join("|");
 
     if (seen.has(key)) return false;
-
     seen.add(key);
     return true;
   });
@@ -258,16 +305,10 @@ async function scrapeTataPlayLive(provider) {
     connection = await openLocalPage(timings);
     const { page } = connection;
 
-    const response = await navigateToProvider(
-      page,
-      provider,
-      timings
-    );
-
+    const response = await navigateToProvider(page, provider, timings);
     timings.readinessWaitMs = await waitForPlanText(page);
 
     const renderedText = await readRenderedText(page, timings);
-
     const extractionStarted = Date.now();
     const plans = extractTataPlayBrowserPlans(renderedText);
     timings.extractionMs = Date.now() - extractionStarted;
@@ -280,11 +321,24 @@ async function scrapeTataPlayLive(provider) {
       renderedText,
       stageTimingsMs: timings,
       note: plans.length
-        ? "Plans extracted from Tata Play Fiber's live rendered Chennai page. Prices are before GST; confirm plan terms and address-level availability."
-        : "Tata Play Fiber loaded, but the browser text did not yield usable plans. The page layout or price format may need an extractor adjustment."
+        ? "Plans extracted from Tata Play Fiber's live rendered page. Prices are before GST; confirm plan terms and address-level availability."
+        : "Tata Play Fiber loaded, but no usable plans were extracted."
     };
   } finally {
     await closeLocalPage(connection, timings);
+  }
+}
+
+function isBsnlPlanListResponse(response) {
+  if (!response.url().includes("/ecare/bsnl/offer/list")) {
+    return false;
+  }
+
+  try {
+    const body = JSON.parse(response.request().postData() || "{}");
+    return body.salesCatgCode === BSNL_CATEGORY_CODE;
+  } catch {
+    return false;
   }
 }
 
@@ -296,137 +350,56 @@ async function scrapeBsnlLive(provider) {
     connection = await openLocalPage(timings);
     const { page } = connection;
 
-    let captureStarted = false;
-    let resolveCapture;
+    const response = await navigateToProvider(page, provider, timings);
 
-    const capturePromise = new Promise((resolve) => {
-      resolveCapture = resolve;
-    });
-
-    page.on("response", async (response) => {
-      if (
-        captureStarted ||
-        !response.url().includes("/ecare/bsnl/offer/list")
-      ) {
-        return;
-      }
-
-      captureStarted = true;
-
-      try {
-        resolveCapture({
-          statusCode: response.status(),
-          json: await response.json()
-        });
-      } catch (error) {
-        resolveCapture({
-          statusCode: response.status(),
-          error
-        });
-      }
-    });
-
-    const navigationStarted = Date.now();
-    let navigationSucceeded = false;
-    let lastNavigationError;
-
-    for (let attempt = 1; attempt <= 2; attempt++) {
-      try {
-        await page.goto(provider.url, {
-          waitUntil: "commit",
-          timeout: NAVIGATION_TIMEOUT_MS
-        });
-
-        navigationSucceeded = true;
-        break;
-      } catch (error) {
-        lastNavigationError = error;
-
-        if (page.url().includes("wsc.cdr.bsnl.co.in")) {
-          navigationSucceeded = true;
-          break;
-        }
-
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-        }
-      }
+    if (response && response.status() >= 400) {
+      throw new Error(`BSNL page returned HTTP ${response.status()}.`);
     }
 
-    timings.navigationMs = Date.now() - navigationStarted;
+    // Wait for the custom area dropdown, not a standard HTML <select>.
+    const combo = page.locator('[role="combobox"]').first();
+    await combo.waitFor({ state: "visible", timeout: 20000 });
 
-    if (!navigationSucceeded) {
-      throw new Error(
-        `BSNL navigation failed: ${lastNavigationError?.message ?? "Unknown navigation error"}`
-      );
-    }
+    const areaStarted = Date.now();
+    await combo.click();
 
-    const buttonStarted = Date.now();
+    const areaOption = page.getByText(BSNL_AREA_NAME, { exact: true });
+    await areaOption.waitFor({ state: "visible", timeout: 10000 });
+    await areaOption.click();
 
-    const queryButtons = page.getByRole("button", {
-      name: "Query",
-      exact: true
-    });
+    timings.areaSelectionMs = Date.now() - areaStarted;
 
-    await queryButtons.first().waitFor({
-      state: "visible",
-      timeout: 20000
-    });
+    // Give the page time to apply the selected area before choosing a category.
+    await page.waitForTimeout(1000);
 
-    timings.queryButtonWaitMs = Date.now() - buttonStarted;
-
-    const clickStarted = Date.now();
-
-    await queryButtons.first().click({
-      timeout: 10000
-    });
-
-    timings.queryClickMs = Date.now() - clickStarted;
-
-    let timeoutId;
+    // Register the waiter BEFORE clicking, because the request starts immediately.
     const apiStarted = Date.now();
-    let capture;
+    const responsePromise = page.waitForResponse(
+      isBsnlPlanListResponse,
+      { timeout: BSNL_API_TIMEOUT_MS }
+    );
 
-    try {
-      capture = await Promise.race([
-        capturePromise,
-        new Promise((_, reject) => {
-          timeoutId = setTimeout(() => {
-            reject(
-              new Error("Timed out waiting for the live BSNL plan API.")
-            );
-          }, 25000);
-        })
-      ]);
-    } finally {
-      if (timeoutId) clearTimeout(timeoutId);
-      timings.apiResponseWaitMs = Date.now() - apiStarted;
+    await page.getByText("Bharat Fiber Broadband", {
+      exact: true
+    }).click();
+
+    const apiResponse = await responsePromise;
+    timings.apiResponseWaitMs = Date.now() - apiStarted;
+
+    if (apiResponse.status() < 200 || apiResponse.status() >= 300) {
+      throw new Error(`BSNL plan API returned HTTP ${apiResponse.status()}.`);
     }
 
-    if (capture.error) {
+    const json = await apiResponse.json();
+
+    if (String(json?.code) !== "200") {
       throw new Error(
-        `Could not read BSNL plan response: ${capture.error.message}`
+        `BSNL API reported an error: ${json?.resultMsg || "Unknown API error"}`
       );
     }
 
-    if (
-      capture.statusCode < 200 ||
-      capture.statusCode >= 300
-    ) {
-      throw new Error(
-        `BSNL plan API returned HTTP ${capture.statusCode}.`
-      );
-    }
-
-    if (capture.json?.code !== "200") {
-      throw new Error(
-        `BSNL API reported an error: ${
-          capture.json?.resultMsg || "Unknown API error"
-        }`
-      );
-    }
-
-    const offers = capture.json?.data?.offerList ?? [];
+    const data = json?.data ?? {};
+    const offers = Array.isArray(data.offerList) ? data.offerList : [];
 
     const extractionStarted = Date.now();
     const plans = extractBsnlApiPlans(offers);
@@ -434,13 +407,29 @@ async function scrapeBsnlLive(provider) {
 
     return {
       plans,
-      statusCode: capture.statusCode,
+      statusCode: apiResponse.status(),
       pageTitle: await page.title(),
       contentChars: JSON.stringify(offers).length,
       stageTimingsMs: timings,
+      sourceMetadata: {
+        selectedArea: BSNL_AREA_NAME,
+        categoryCode: BSNL_CATEGORY_CODE,
+        returnedOfferCount: offers.length,
+        apiReportedTotal: data.pageInfo?.total ?? null,
+        returnedPage: data.pageInfo?.currentPage ?? null,
+        reportedPageSize: data.pageInfo?.pageSize ?? null,
+        categoryRequestIncludesAreaId: (() => {
+          try {
+            const body = JSON.parse(apiResponse.request().postData() || "{}");
+            return Object.hasOwn(body, "areaId");
+          } catch {
+            return false;
+          }
+        })()
+      },
       note: plans.length
-        ? "Plans fetched from the live BSNL API. Billing periods and address-level availability require verification."
-        : "The BSNL API responded, but no usable plans were extracted."
+        ? "Plans extracted from a fresh BSNL API response after selecting CHENNAI STP. The category request did not include areaId, so verify individual plan availability for the address. Only returned offers are included; the API may report a larger total."
+        : "BSNL returned a response, but no usable plans were extracted."
     };
   } finally {
     await closeLocalPage(connection, timings);
@@ -511,6 +500,7 @@ export async function scrapeProvider({
       planCount: plans.length,
       plans,
       stageTimingsMs: result.stageTimingsMs ?? {},
+      sourceMetadata: result.sourceMetadata ?? null,
       note: result.note
     };
   } catch (error) {
@@ -546,6 +536,7 @@ export async function scrapeProvider({
       planCount: 0,
       plans: [],
       stageTimingsMs: {},
+      sourceMetadata: null,
       error: message
     };
   }

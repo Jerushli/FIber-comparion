@@ -1,4 +1,5 @@
-﻿import test from "node:test";
+﻿
+import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
@@ -94,6 +95,37 @@ test("BSNL identifies speed thresholds without treating them as data caps", () =
   assert.equal(plans[0].reducedSpeedMbps, 4);
 });
 
+test("BSNL removes internal guiding price from benefits but preserves source evidence", () => {
+  const originalBrief =
+    "Speed: Up to 25 Mbps till 1 GB Fup_Speed: Up to 25 Mbps till 1 GB Data_Download:UNLIMITED Guiding_Price:54000000000";
+
+  const plans = extractBsnlApiPlans([
+    {
+      offerId: "bsnl-cleanup-1",
+      offerName: "FTTH Test Plan",
+      displayRentPrice: "150",
+      rentUnitName: "Monthly",
+      brief: originalBrief
+    }
+  ]);
+
+  assert.equal(plans.length, 1);
+
+  assert.doesNotMatch(plans[0].benefits, /Guiding_Price/i);
+  assert.doesNotMatch(plans[0].description, /Guiding_Price/i);
+  assert.match(plans[0].benefits, /Data_Download:UNLIMITED/i);
+
+  assert.equal(plans[0].monthlyPrice, 150);
+  assert.equal(plans[0].dataDownloadPolicy, "unlimited");
+  assert.equal(plans[0].dataLimitGb, null);
+  assert.equal(plans[0].speedThresholdGb, 1);
+
+  assert.match(
+    plans[0].sourceEvidence.originalBrief,
+    /Guiding_Price:54000000000/i
+  );
+});
+
 test("BSNL rejects invalid offers and non-array input safely", () => {
   assert.deepEqual(extractBsnlApiPlans(null), []);
   assert.deepEqual(extractBsnlApiPlans({}), []);
@@ -132,4 +164,43 @@ test("generic extractor does not pretend to support BSNL markdown", () => {
   );
 
   assert.deepEqual(plans, []);
+});
+
+test("BSNL uses the nested monthly recurring charge when rentUnitName is missing", () => {
+  const plans = extractBsnlApiPlans([
+    {
+      offerId: "bsnl-monthly-1",
+      offerName: "Fibre Basic",
+      displayRentPrice: "499.00",
+      rentUnitName: null,
+      brief: "Speed: Upto 40 Mbps till 3300 GB; Fup_Speed: 4 Mbps",
+      offerExtMap: {
+        dppOfferDtoList: [
+          {
+            offerName: "Fibre Basic Monthly",
+            defaultFlag: "Y",
+            leaseOfMonth: "1.00",
+            lease: "1",
+            mrcDisplay: "499.00"
+          },
+          {
+            offerName: "Fibre Basic Annual",
+            defaultFlag: "N",
+            leaseOfMonth: "12.00",
+            lease: "12",
+            mrcDisplay: "4990.00"
+          }
+        ]
+      }
+    }
+  ]);
+
+  assert.equal(plans.length, 1);
+  assert.equal(plans[0].monthlyPrice, 499);
+  assert.equal(plans[0].displayedPrice, 499);
+  assert.equal(plans[0].priceBasis, "provider_monthly_recurring_charge");
+  assert.equal(plans[0].billingPeriod, "Monthly");
+  assert.equal(plans[0].speedMbps, 40);
+  assert.equal(plans[0].speedThresholdGb, 3300);
+  assert.equal(plans[0].reducedSpeedMbps, 4);
 });
