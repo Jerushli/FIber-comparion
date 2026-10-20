@@ -1,4 +1,3 @@
-
 function cleanText(value = "") {
   return String(value)
     .replace(/<br\s*\/?>/gi, " ")
@@ -176,7 +175,10 @@ function validPrice(value) {
     return null;
   }
 
-  const price = Number(String(value).replace(/[â‚¹,\s]/g, ""));
+  const price = Number(
+    String(value).replace(/[\u20B9,\s]/g, "")
+  );
+
   return Number.isFinite(price) && price > 0 ? price : null;
 }
 
@@ -216,11 +218,115 @@ function getMonthlyOption(offer) {
   }) ?? null;
 }
 
-function cleanBsnlCustomerText(brief = "") {
-  return cleanText(brief)
-    .replace(/\bGuiding_Price\s*:\s*[^ ]+/gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
+function getBsnlField(brief, fieldName) {
+  const escapedName = fieldName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const nextFields =
+    "Speed|Fup_Speed|Data_Download|Local_Std|Unlimit_Timing|Guiding_Price";
+
+  const pattern = new RegExp(
+    `${escapedName}\\s*:\\s*(.*?)(?=\\b(?:${nextFields})\\s*:|$)`,
+    "i"
+  );
+
+  return cleanText(brief.match(pattern)?.[1] ?? "");
+}
+
+function parseBsnlSpeed(value = "") {
+  const match = value.match(
+    /(?:up\s*to|upto)?\s*(\d+(?:\.\d+)?)\s*(Mbps|Gbps|GBPS)\b/i
+  );
+
+  if (!match) return null;
+
+  const amount = Number(match[1]);
+  const unit = match[2].toLowerCase();
+
+  return unit === "gbps" ? amount * 1000 : amount;
+}
+
+function parseBsnlAllowance(value = "") {
+  const match = value.match(
+    /\btill\s*([\d,]+(?:\.\d+)?)\s*(GB|TB)\b/i
+  );
+
+  if (!match) return null;
+
+  const amount = Number(match[1].replace(/,/g, ""));
+  if (!Number.isFinite(amount) || amount <= 0) return null;
+
+  return match[2].toUpperCase() === "TB"
+    ? amount * 1000
+    : amount;
+}
+
+function formatBsnlCustomerText(brief = "") {
+  const speedText = getBsnlField(brief, "Speed");
+  const fupText = getBsnlField(brief, "Fup_Speed");
+  const dataText = getBsnlField(brief, "Data_Download");
+  const callsText = getBsnlField(brief, "Local_Std");
+  const timingText = getBsnlField(brief, "Unlimit_Timing");
+
+  const parts = [];
+
+  const speedMbps = parseBsnlSpeed(speedText);
+  const allowanceGb = parseBsnlAllowance(speedText);
+
+  if (speedMbps !== null) {
+    parts.push(`Up to ${speedMbps} Mbps`);
+  }
+
+  if (allowanceGb !== null) {
+    parts.push(
+      `${allowanceGb.toLocaleString("en-IN")} GB high-speed allowance`
+    );
+  }
+
+  const reducedSpeedMbps = parseBsnlSpeed(fupText);
+
+  if (reducedSpeedMbps !== null) {
+    const beyondMatch = fupText.match(
+      /\bbeyond\s*([\d,]+(?:\.\d+)?)\s*(GB|TB)\b/i
+    );
+
+    let reducedSpeedText = `Then ${reducedSpeedMbps} Mbps`;
+
+    if (beyondMatch) {
+      const amount = Number(beyondMatch[1].replace(/,/g, ""));
+      const unit = beyondMatch[2].toUpperCase();
+      const gbAmount = unit === "TB" ? amount * 1000 : amount;
+
+      reducedSpeedText +=
+        ` beyond ${gbAmount.toLocaleString("en-IN")} GB`;
+    } else {
+      reducedSpeedText += " after the high-speed allowance";
+    }
+
+    parts.push(reducedSpeedText);
+  }
+
+  if (/\bUNLIMITED\b/i.test(dataText)) {
+    parts.push("Unlimited data downloads");
+  } else if (dataText) {
+    parts.push(dataText);
+  }
+
+  if (/\bUNLIMITED\b/i.test(callsText)) {
+    parts.push("Unlimited local and STD calls");
+  } else if (callsText) {
+    parts.push(callsText);
+  }
+
+  if (timingText) {
+    if (/unlimited\s*24\s*hrs/i.test(timingText)) {
+      parts.push("Available 24 hours");
+    } else if (/individual.*rural|rural.*individual/i.test(timingText)) {
+      parts.push("For individual customers in rural areas");
+    } else if (!/^unlimited\s*$/i.test(timingText)) {
+      parts.push(timingText);
+    }
+  }
+
+  return parts.join("; ");
 }
 
 export function extractBsnlApiPlans(offers = []) {
@@ -228,19 +334,13 @@ export function extractBsnlApiPlans(offers = []) {
 
   return offers.map((offer) => {
     const originalBrief = cleanText(offer.brief || "");
-    const customerText = cleanBsnlCustomerText(originalBrief);
 
-    const speedMatch = originalBrief.match(
-      /Speed\s*:\s*(?:Up\s*to|Upto)\s*(\d+(?:\.\d+)?)\s*(Mbps|Gbps|GBPS)\b/i
-    );
+    const speedText = getBsnlField(originalBrief, "Speed");
+    const fupText = getBsnlField(originalBrief, "Fup_Speed");
 
-    const speedThresholdMatch = originalBrief.match(
-      /Speed\s*:\s*.*?\btill\s*([\d,]+(?:\.\d+)?)\s*GB/i
-    );
-
-    const reducedSpeedMatch = originalBrief.match(
-      /Fup_Speed\s*:\s*(?:Up\s*to|Upto)?\s*(\d+(?:\.\d+)?)\s*(Mbps|Gbps|GBPS)\b/i
-    );
+    const speedMbps = parseBsnlSpeed(speedText);
+    const speedThresholdGb = parseBsnlAllowance(speedText);
+    const reducedSpeedMbps = parseBsnlSpeed(fupText);
 
     const unlimitedMatch =
       /\bData_Download\s*:\s*UNLIMITED\b/i.test(originalBrief);
@@ -260,33 +360,13 @@ export function extractBsnlApiPlans(offers = []) {
 
     if (
       !offer.offerName ||
-      !speedMatch ||
+      speedMbps === null ||
       (displayedPrice === null && monthlyPrice === null)
     ) {
       return null;
     }
 
-    const speedValue = Number(speedMatch[1]);
-    const speedUnit = speedMatch[2].toLowerCase();
-    const speedMbps = speedUnit === "gbps"
-      ? speedValue * 1000
-      : speedValue;
-
-    const reducedSpeedValue = reducedSpeedMatch
-      ? Number(reducedSpeedMatch[1])
-      : null;
-
-    const reducedSpeedMbps = reducedSpeedValue === null
-      ? null
-      : reducedSpeedMatch[2].toLowerCase() === "gbps"
-        ? reducedSpeedValue * 1000
-        : reducedSpeedValue;
-
-    const speedThresholdGb = speedThresholdMatch
-      ? Number(speedThresholdMatch[1].replace(/,/g, ""))
-      : null;
-
-    const benefits = customerText || null;
+    const benefits = formatBsnlCustomerText(originalBrief) || null;
 
     return {
       providerId: "bsnl",
@@ -305,6 +385,7 @@ export function extractBsnlApiPlans(offers = []) {
         : rentUnit || null,
       speedMbps,
       dataLimitGb: null,
+      highSpeedAllowanceGb: speedThresholdGb,
       speedThresholdGb,
       dataDownloadPolicy: unlimitedMatch ? "unlimited" : "not_verified",
       reducedSpeedMbps,

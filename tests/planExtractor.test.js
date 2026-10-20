@@ -113,7 +113,7 @@ test("BSNL removes internal guiding price from benefits but preserves source evi
 
   assert.doesNotMatch(plans[0].benefits, /Guiding_Price/i);
   assert.doesNotMatch(plans[0].description, /Guiding_Price/i);
-  assert.match(plans[0].benefits, /Data_Download:UNLIMITED/i);
+  assert.match(plans[0].benefits, /Unlimited data downloads/i);
 
   assert.equal(plans[0].monthlyPrice, 150);
   assert.equal(plans[0].dataDownloadPolicy, "unlimited");
