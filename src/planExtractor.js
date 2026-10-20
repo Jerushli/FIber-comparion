@@ -1,4 +1,4 @@
-function cleanText(value = "") {
+﻿function cleanText(value = "") {
   return String(value)
     .replace(/<br\s*\/?>/gi, " ")
     .replace(/<\/?p[^>]*>/gi, " ")
@@ -312,8 +312,6 @@ function formatBsnlCustomerText(brief = "") {
 
   if (/\bUNLIMITED\b/i.test(callsText)) {
     parts.push("Unlimited local and STD calls");
-  } else if (callsText) {
-    parts.push(callsText);
   }
 
   if (timingText) {

@@ -97,7 +97,7 @@ test("BSNL identifies speed thresholds without treating them as data caps", () =
 
 test("BSNL removes internal guiding price from benefits but preserves source evidence", () => {
   const originalBrief =
-    "Speed: Up to 25 Mbps till 1 GB Fup_Speed: Up to 25 Mbps till 1 GB Data_Download:UNLIMITED Guiding_Price:54000000000";
+    "Speed: Up to 25 Mbps till 1 GB Fup_Speed: Up to 25 Mbps till 1 GB Data_Download:UNLIMITED Local_Std:1.2-ONNET,1.2-OFFNET Guiding_Price:54000000000";
 
   const plans = extractBsnlApiPlans([
     {
@@ -114,7 +114,13 @@ test("BSNL removes internal guiding price from benefits but preserves source evi
   assert.doesNotMatch(plans[0].benefits, /Guiding_Price/i);
   assert.doesNotMatch(plans[0].description, /Guiding_Price/i);
   assert.match(plans[0].benefits, /Unlimited data downloads/i);
+  assert.doesNotMatch(plans[0].benefits, /ONNET|OFFNET/i);
+  assert.doesNotMatch(plans[0].description, /ONNET|OFFNET/i);
 
+  assert.match(
+    plans[0].sourceEvidence.originalBrief,
+    /Local_Std:1\.2-ONNET,1\.2-OFFNET/i
+  );
   assert.equal(plans[0].monthlyPrice, 150);
   assert.equal(plans[0].dataDownloadPolicy, "unlimited");
   assert.equal(plans[0].dataLimitGb, null);
