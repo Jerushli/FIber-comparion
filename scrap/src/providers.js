@@ -1,4 +1,4 @@
-﻿export const PROVIDERS = [
+export const PROVIDERS = [
   {
     id: "airtel",
     name: "Airtel Xstream Fiber",
@@ -22,6 +22,14 @@
     name: "AT&T Internet",
     city: "United States (address-specific)",
     url: "https://www.att.com/internet/availability/",
+    addressRequired: true,
+    country: "US"
+  },
+  {
+    id: "verizon",
+    name: "Verizon Fios",
+    city: "United States (address-specific)",
+    url: "https://www.verizon.com/home/internet/fios/",
     addressRequired: true,
     country: "US"
   }
