@@ -8,7 +8,7 @@ import { scrapeAttPlans } from "./attPlans.js";
 import { getAddressCoverage } from "./addressCoverage.js";
 import { getRecentLogs } from "./db.js";
 import { checkVerizonAvailability, sanitizeVerizonResult } from "./verizonAvailability.js";
-
+import { checkViasatAvailability,sanitizeViasatResult} from "./viasatAvailability.js";
 function parseUSAddress(req, res) {
   const address = typeof req.body?.address === "string" ? req.body.address.trim() : "";
   if (!address || address.length < 8 || address.length > 300) {
@@ -25,6 +25,7 @@ export function createApp({
   scrapeAttPlansImpl = scrapeAttPlans,
   checkVerizonAvailabilityImpl = checkVerizonAvailability,
   getAddressCoverageImpl = getAddressCoverage,
+  checkViasatAvailabilityImpl = checkViasatAvailability,
   getRecentLogsImpl = getRecentLogs
 } = {}) {
   const app = express();
@@ -208,6 +209,50 @@ export function createApp({
       });
     }
   });
+
+app.post("/api/viasat/availability", async (req, res) => {
+  const address = parseUSAddress(req, res);
+  if (address === null) return;
+
+  const requestId = randomUUID();
+  const requestedAt = new Date().toISOString();
+
+  try {
+    const rawResult = await checkViasatAvailabilityImpl({
+      address,
+      requestId,
+      requestedAt,
+    });
+
+    const result = sanitizeViasatResult(rawResult, address);
+
+    return res.json({
+      requestId,
+      requestedAt,
+      completedAt: new Date().toISOString(),
+      liveFetchPolicy: "fresh_address_lookup_on_every_request",
+      priceCacheUsed: false,
+      result,
+    });
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : String(error);
+
+    console.error(`[viasat-availability] ${requestId} failed:`, message);
+
+    return res.status(502).json({
+      requestId,
+      providerId: "viasat",
+      extractionStatus: "failed",
+      availabilityStatus: "unknown",
+      addressEligibilityVerified: false,
+      planCount: 0,
+      plans: [],
+      priceCacheUsed: false,
+      error: "Viasat address lookup failed. Check the backend logs for details.",
+    });
+  }
+});
 
   app.get("/api/logs", (req, res) => {
     const parsed = Number.parseInt(req.query.limit ?? "50", 10);

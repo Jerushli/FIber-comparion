@@ -1,4 +1,4 @@
-export const PROVIDERS = [
+﻿export const PROVIDERS = [
   {
     id: "airtel",
     name: "Airtel Xstream Fiber",
@@ -32,5 +32,13 @@ export const PROVIDERS = [
     url: "https://www.verizon.com/home/internet/fios/",
     addressRequired: true,
     country: "US"
-  }
+  },
+  {
+  id: "viasat",
+  name: "Viasat Internet",
+  city: "United States (address-specific)",
+  url: "https://buy.viasat.com/en-US/r/",
+  addressRequired: true,
+  country: "US"
+ }
 ];

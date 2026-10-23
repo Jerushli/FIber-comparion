@@ -354,6 +354,11 @@ function App() {
   const [attLoading, setAttLoading] = useState(false)
   const [attError, setAttError] = useState('')
 
+  const [viasatAddress, setViasatAddress] = useState('')
+  const [viasatResult, setViasatResult] = useState(null)
+  const [viasatLoading, setViasatLoading] = useState(false)
+  const [viasatError, setViasatError] = useState('')
+
   const [coverageAddress, setCoverageAddress] = useState('')
   const [coverageResult, setCoverageResult] = useState(null)
   const [coverageLoading, setCoverageLoading] = useState(false)
@@ -443,6 +448,34 @@ function App() {
       setAttLoading(false)
     }
   }
+
+
+const checkViasatAddress = async (event) => {
+  event.preventDefault()
+  setViasatLoading(true)
+  setViasatError('')
+  setViasatResult(null)
+
+  try {
+    const response = await fetch(`${API_BASE}/api/viasat/availability`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address: viasatAddress.trim() }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.error || data.details || `HTTP ${response.status}`)
+    }
+
+    setViasatResult(data.result || data)
+  } catch (error) {
+    setViasatError(error.message || 'The Viasat address lookup failed.')
+  } finally {
+    setViasatLoading(false)
+  }
+}
 
   const checkCoverage = async (event) => {
     event.preventDefault()
@@ -784,6 +817,152 @@ function App() {
             )}
           </div>
         </section>
+
+<section className="att-section viasat-section">
+  <div className="att-intro">
+    <span className="section-kicker">03 / UNITED STATES</span>
+    <h2>Check Viasat at a specific address</h2>
+    <p>
+      Submit a full US address to check the official Viasat ordering flow.
+      Extracted plan candidates are clearly marked until eligibility is verified.
+    </p>
+    <a
+      href="https://buy.viasat.com/"
+      target="_blank"
+      rel="noreferrer"
+      className="source-link"
+    >
+      Open official Viasat ordering page →
+    </a>
+  </div>
+
+  <div className="att-form-card">
+    <form onSubmit={checkViasatAddress}>
+      <label htmlFor="viasat-address">Full US street address</label>
+      <input
+        id="viasat-address"
+        value={viasatAddress}
+        onChange={(event) => setViasatAddress(event.target.value)}
+        placeholder="1393 Lincoln Pl, Brooklyn, NY 11213"
+        minLength={8}
+        maxLength={300}
+        required
+      />
+
+      <button
+        className="button button-primary button-full"
+        type="submit"
+        disabled={viasatLoading || health !== 'online'}
+      >
+        {viasatLoading ? (
+          <>
+            <span className="spinner spinner-light" />
+            Checking Viasat...
+          </>
+        ) : (
+          'Check Viasat plans →'
+        )}
+      </button>
+
+      <p className="privacy-note">
+        Only submit an address you are authorized to use.
+      </p>
+    </form>
+
+    {viasatError && (
+      <div className="notice notice-error att-result" role="alert">
+        <strong>Viasat lookup could not be completed</strong>
+        <p>{viasatError}</p>
+      </div>
+    )}
+
+    {viasatResult && (
+      <div className="att-result">
+        <div className="att-result-heading">
+          <strong>Viasat lookup result</strong>
+          <span className={`status-pill ${
+            viasatResult.addressEligibilityVerified
+              ? 'status-good'
+              : 'status-warning'
+          }`}>
+            {viasatResult.addressEligibilityVerified
+              ? 'Address verified'
+              : 'Not verified'}
+          </span>
+        </div>
+
+        <p className="att-result-address">
+          {viasatResult.address || viasatAddress}
+        </p>
+
+        {viasatResult.note && <p>{viasatResult.note}</p>}
+
+        <div className="att-result-details">
+          <span>
+            Plans returned:{' '}
+            <strong>
+              {viasatResult.planCount ?? viasatResult.plans?.length ?? 0}
+            </strong>
+          </span>
+          <span>
+            Extraction:{' '}
+            <strong>
+              {formatLabel(viasatResult.extractionStatus || 'unknown')}
+            </strong>
+          </span>
+          <span>
+            Availability:{' '}
+            <strong>
+              {formatLabel(viasatResult.availabilityStatus || 'unknown')}
+            </strong>
+          </span>
+        </div>
+
+        {Array.isArray(viasatResult.plans) &&
+          viasatResult.plans.length > 0 && (
+            <div className="plans-list">
+              {viasatResult.plans.map((plan, index) => (
+                <div className="plan-item" key={`viasat-${index}`}>
+                  <h4>{getPlanName(plan, index)}</h4>
+
+                  <p>
+                    {Number.isFinite(Number(plan.monthlyPrice)) &&
+                    Number(plan.monthlyPrice) > 0
+                      ? `$${Number(plan.monthlyPrice).toFixed(2)} / month`
+                      : 'Price not provided by source'}
+                  </p>
+
+                  {plan.speedMbps != null && (
+                    <p>Reported speed: {plan.speedMbps} Mbps</p>
+                  )}
+
+                  <p>
+                    Address eligibility:{' '}
+                    {plan.addressEligibility === 'verified'
+                      ? 'Verified'
+                      : 'Not verified'}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+        <p className="source-time">
+          Checked: {formatDate(viasatResult.fetchedAt)}
+        </p>
+
+        <a
+          className="source-link"
+          href={viasatResult.sourceUrl || 'https://buy.viasat.com/'}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Review Viasat source →
+        </a>
+      </div>
+    )}
+  </div>
+</section>
 
         <section className="coverage-section">
           <div className="coverage-intro">
